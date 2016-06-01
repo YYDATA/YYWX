@@ -1,0 +1,58 @@
+<div iscroll class="page-content not-header not-footer">
+    <div>
+        <div class="slider">
+            <img src="../../resources/images/banner.jpg" alt="" class="img-responsive">
+        </div>
+        <div class="container-fluid area-wrap">
+            <form novalidate form-validated="submit()" name="homeForm" class="home-form">
+                <div class="form-group row">
+                    <label class="col-xs-4 control-label">借贷金额</label>
+                    <div class="col-xs-8">
+						<select ng-model="params.loanamount" class="form-control" ng-init="params.loanamount='1'">
+							<option value="1">1万</option>
+							<option value="2">2万</option>
+							<option value="3">3万</option>
+							<option value="4">4万</option>
+							<option value="4">5万</option>
+						</select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xs-4 control-label">借贷期限</label>
+                    <div class="col-xs-8">
+                        <select ng-model="params.loanterm" ng-init="params.loanterm='1'" class="form-control">
+                            <option value="1">1年</option>
+                            <option value="2">2年</option>
+                            <option value="3">3年</option>
+                            <option value="4">4年</option>
+                            <option value="4">5年</option>
+                        </select>
+                    </div>
+                </div>
+                <div ng-class="{'has-error':homeForm.phone.$invalid && !homeForm.phone.$pristine}" class="form-group row">
+                    <div class="col-xs-12">
+                        <input ng-model="params.cellphone" name="phone" class="form-control" type="text" placeholder="请输入您的手机号" required ng-pattern="/^1[345678]\d{9}$/">
+                        <div ng-messages="homeForm.phone.$error" ng-show="!homeForm.phone.$pristine">
+							<div ng-message="required" class="help-block">必填项不能为空</div>
+							<div ng-message="pattern" class="help-block">请输入正确的手机号</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center form-group row">
+                    <button type="submit" class="home-form-btn">快速申请贷款</button>
+                </div>
+            </form>
+        </div>
+        <div class="text-center">
+            <div>
+                <img style="width:320px" src="../../resources/images/img01.jpg" alt="">
+            </div>
+            <div>
+                <img style="width:320px" src="../../resources/images/img02.jpg" alt="">
+            </div>
+            <div>
+                <img style="width:320px" src="../../resources/images/img03.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</div>

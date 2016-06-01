@@ -47,7 +47,7 @@ public class CustomerControl {
 		return JsonViewFactory.buildJsonView(new ResponseResult<>(true, "操作成功！", null));
 	}
 	/**
-	 * @Title: saveCustomer
+	 * @Title: saveOrUpdateCustomer
 	 * @Description: 保存客户信息
 	 * @author caizhen
 	 * @param @param request

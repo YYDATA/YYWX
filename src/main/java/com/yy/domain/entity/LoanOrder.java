@@ -4,131 +4,132 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class LoanOrder {
-    private String loanordercode;
+    private String loanOrderCode;
 
-    private String productcode;
+    private String productCode;
 
-    private String loancontractcode;
+    private String loanContractCode;
 
-    private String loantitle;
+    private String loanTitle;
 
-    private Long customerid;
+    private Long customerID;
 
-    private Long salerid;
+    private Long salerID;
 
-    private Float loanamount;
+    private Float loanAmount;
 
-    private Float guarantyfee;
+    private Float guarantyFee;
 
     private String currency;
 
-    private Date startdate;
+    private Date startDate;
 
-    private Date enddate;
+    private Date endDate;
 
-    private Integer loanterm;
+    private Integer loanTerm;
 
-    private String loantermtype;
+    private String loanTermType;
 
-    private Integer graceterm;
+    private Integer graceTerm;
 
-    private String gracetermtype;
+    private String graceTermType;
 
-    private String guarantyorgcode;
+    private String guarantyOrgCode;
 
-    private String orderstatus;
+    private String orderStatus;
 
-    private String channelcode;
+    private String channelCode;
 
-    private BigDecimal interestrate;
+    private BigDecimal interestRate;
 
     private Float fee;
 
-    private String risklevel;
+    private String riskLevel;
 
-    private Integer repayday;
+    private Integer repayDay;
 
-    private Date orderdate;
+    private Date orderDate;
 
-    private BigDecimal overdueinterestrate;
+    private BigDecimal overdueInterestRate;
 
     private Long recorder;
 
-    private String loanremark;
+    private String loanRemark;
 
     private String summary;
     
-    private String cellphone;
+    private String cellPhone;
 
-    public String getCellphone() {
-		return cellphone;
+    public String getCellPhone() {
+		return cellPhone;
 	}
 
-	public void setCellphone(String cellphone) {
-		this.cellphone = cellphone;
+	public void setCellPhone(String cellPhone) {
+		this.cellPhone = cellPhone;
 	}
-    public String getLoanordercode() {
-        return loanordercode;
+
+	public String getLoanOrderCode() {
+        return loanOrderCode;
     }
 
-    public void setLoanordercode(String loanordercode) {
-        this.loanordercode = loanordercode == null ? null : loanordercode.trim();
+    public void setLoanOrderCode(String loanOrderCode) {
+        this.loanOrderCode = loanOrderCode == null ? null : loanOrderCode.trim();
     }
 
-    public String getProductcode() {
-        return productcode;
+    public String getProductCode() {
+        return productCode;
     }
 
-    public void setProductcode(String productcode) {
-        this.productcode = productcode == null ? null : productcode.trim();
+    public void setProductCode(String productCode) {
+        this.productCode = productCode == null ? null : productCode.trim();
     }
 
-    public String getLoancontractcode() {
-        return loancontractcode;
+    public String getLoanContractCode() {
+        return loanContractCode;
     }
 
-    public void setLoancontractcode(String loancontractcode) {
-        this.loancontractcode = loancontractcode == null ? null : loancontractcode.trim();
+    public void setLoanContractCode(String loanContractCode) {
+        this.loanContractCode = loanContractCode == null ? null : loanContractCode.trim();
     }
 
-    public String getLoantitle() {
-        return loantitle;
+    public String getLoanTitle() {
+        return loanTitle;
     }
 
-    public void setLoantitle(String loantitle) {
-        this.loantitle = loantitle == null ? null : loantitle.trim();
+    public void setLoanTitle(String loanTitle) {
+        this.loanTitle = loanTitle == null ? null : loanTitle.trim();
     }
 
-    public Long getCustomerid() {
-        return customerid;
+    public Long getCustomerID() {
+        return customerID;
     }
 
-    public void setCustomerid(Long customerid) {
-        this.customerid = customerid;
+    public void setCustomerID(Long customerID) {
+        this.customerID = customerID;
     }
 
-    public Long getSalerid() {
-        return salerid;
+    public Long getSalerID() {
+        return salerID;
     }
 
-    public void setSalerid(Long salerid) {
-        this.salerid = salerid;
+    public void setSalerID(Long salerID) {
+        this.salerID = salerID;
     }
 
-    public Float getLoanamount() {
-        return loanamount;
+    public Float getLoanAmount() {
+        return loanAmount;
     }
 
-    public void setLoanamount(Float loanamount) {
-        this.loanamount = loanamount;
+    public void setLoanAmount(Float loanAmount) {
+        this.loanAmount = loanAmount;
     }
 
-    public Float getGuarantyfee() {
-        return guarantyfee;
+    public Float getGuarantyFee() {
+        return guarantyFee;
     }
 
-    public void setGuarantyfee(Float guarantyfee) {
-        this.guarantyfee = guarantyfee;
+    public void setGuarantyFee(Float guarantyFee) {
+        this.guarantyFee = guarantyFee;
     }
 
     public String getCurrency() {
@@ -139,84 +140,84 @@ public class LoanOrder {
         this.currency = currency == null ? null : currency.trim();
     }
 
-    public Date getStartdate() {
-        return startdate;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setStartdate(Date startdate) {
-        this.startdate = startdate;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public Date getEnddate() {
-        return enddate;
+    public Date getEndDate() {
+        return endDate;
     }
 
-    public void setEnddate(Date enddate) {
-        this.enddate = enddate;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
-    public Integer getLoanterm() {
-        return loanterm;
+    public Integer getLoanTerm() {
+        return loanTerm;
     }
 
-    public void setLoanterm(Integer loanterm) {
-        this.loanterm = loanterm;
+    public void setLoanTerm(Integer loanTerm) {
+        this.loanTerm = loanTerm;
     }
 
-    public String getLoantermtype() {
-        return loantermtype;
+    public String getLoanTermType() {
+        return loanTermType;
     }
 
-    public void setLoantermtype(String loantermtype) {
-        this.loantermtype = loantermtype == null ? null : loantermtype.trim();
+    public void setLoanTermType(String loanTermType) {
+        this.loanTermType = loanTermType == null ? null : loanTermType.trim();
     }
 
-    public Integer getGraceterm() {
-        return graceterm;
+    public Integer getGraceTerm() {
+        return graceTerm;
     }
 
-    public void setGraceterm(Integer graceterm) {
-        this.graceterm = graceterm;
+    public void setGraceTerm(Integer graceTerm) {
+        this.graceTerm = graceTerm;
     }
 
-    public String getGracetermtype() {
-        return gracetermtype;
+    public String getGraceTermType() {
+        return graceTermType;
     }
 
-    public void setGracetermtype(String gracetermtype) {
-        this.gracetermtype = gracetermtype == null ? null : gracetermtype.trim();
+    public void setGraceTermType(String graceTermType) {
+        this.graceTermType = graceTermType == null ? null : graceTermType.trim();
     }
 
-    public String getGuarantyorgcode() {
-        return guarantyorgcode;
+    public String getGuarantyOrgCode() {
+        return guarantyOrgCode;
     }
 
-    public void setGuarantyorgcode(String guarantyorgcode) {
-        this.guarantyorgcode = guarantyorgcode == null ? null : guarantyorgcode.trim();
+    public void setGuarantyOrgCode(String guarantyOrgCode) {
+        this.guarantyOrgCode = guarantyOrgCode == null ? null : guarantyOrgCode.trim();
     }
 
-    public String getOrderstatus() {
-        return orderstatus;
+    public String getOrderStatus() {
+        return orderStatus;
     }
 
-    public void setOrderstatus(String orderstatus) {
-        this.orderstatus = orderstatus == null ? null : orderstatus.trim();
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus == null ? null : orderStatus.trim();
     }
 
-    public String getChannelcode() {
-        return channelcode;
+    public String getChannelCode() {
+        return channelCode;
     }
 
-    public void setChannelcode(String channelcode) {
-        this.channelcode = channelcode == null ? null : channelcode.trim();
+    public void setChannelCode(String channelCode) {
+        this.channelCode = channelCode == null ? null : channelCode.trim();
     }
 
-    public BigDecimal getInterestrate() {
-        return interestrate;
+    public BigDecimal getInterestRate() {
+        return interestRate;
     }
 
-    public void setInterestrate(BigDecimal interestrate) {
-        this.interestrate = interestrate;
+    public void setInterestRate(BigDecimal interestRate) {
+        this.interestRate = interestRate;
     }
 
     public Float getFee() {
@@ -227,36 +228,36 @@ public class LoanOrder {
         this.fee = fee;
     }
 
-    public String getRisklevel() {
-        return risklevel;
+    public String getRiskLevel() {
+        return riskLevel;
     }
 
-    public void setRisklevel(String risklevel) {
-        this.risklevel = risklevel == null ? null : risklevel.trim();
+    public void setRiskLevel(String riskLevel) {
+        this.riskLevel = riskLevel == null ? null : riskLevel.trim();
     }
 
-    public Integer getRepayday() {
-        return repayday;
+    public Integer getRepayDay() {
+        return repayDay;
     }
 
-    public void setRepayday(Integer repayday) {
-        this.repayday = repayday;
+    public void setRepayDay(Integer repayDay) {
+        this.repayDay = repayDay;
     }
 
-    public Date getOrderdate() {
-        return orderdate;
+    public Date getOrderDate() {
+        return orderDate;
     }
 
-    public void setOrderdate(Date orderdate) {
-        this.orderdate = orderdate;
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
 
-    public BigDecimal getOverdueinterestrate() {
-        return overdueinterestrate;
+    public BigDecimal getOverdueInterestRate() {
+        return overdueInterestRate;
     }
 
-    public void setOverdueinterestrate(BigDecimal overdueinterestrate) {
-        this.overdueinterestrate = overdueinterestrate;
+    public void setOverdueInterestRate(BigDecimal overdueInterestRate) {
+        this.overdueInterestRate = overdueInterestRate;
     }
 
     public Long getRecorder() {
@@ -267,12 +268,12 @@ public class LoanOrder {
         this.recorder = recorder;
     }
 
-    public String getLoanremark() {
-        return loanremark;
+    public String getLoanRemark() {
+        return loanRemark;
     }
 
-    public void setLoanremark(String loanremark) {
-        this.loanremark = loanremark == null ? null : loanremark.trim();
+    public void setLoanRemark(String loanRemark) {
+        this.loanRemark = loanRemark == null ? null : loanRemark.trim();
     }
 
     public String getSummary() {

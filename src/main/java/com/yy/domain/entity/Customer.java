@@ -3,115 +3,115 @@ package com.yy.domain.entity;
 import java.util.Date;
 
 public class Customer {
-    private Long customerid;
+    private Long customerID;
 
-    private Long userid;
+    private Long userID;
 
-    private Long accountid;
+    private Long accountID;
 
-    private String customertype;
+    private String customerType;
 
-    private String customercode;
+    private String customerCode;
 
     private String name;
 
-    private String ename;
+    private String EName;
 
     private String alias;
 
-    private String loginaccount;
+    private String loginAccount;
 
-    private String loginpassword;
+    private String loginPassword;
 
-    private Date loginpawwrodvalidity;
+    private Date loginPawwrodValidity;
 
-    private String paypassword;
+    private String payPassword;
 
-    private String billsendtype;
+    private String billSendType;
 
     private String email;
 
-    private String cellphone;
+    private String cellPhone;
 
-    private String fixtel;
+    private String fixTel;
 
     private String address;
 
-    private String postcode;
+    private String postCode;
 
     private String fax;
 
-    private String channelcode;
+    private String channelCode;
 
-    private String refereetype;
+    private String refereeType;
 
-    private String refereeaccount;
+    private String refereeAccount;
 
-    private Date createtime;
+    private Date createTime;
 
-    private Long createrid;
+    private Long createrID;
 
-    private Long lastupdaterid;
+    private Long lastUpdaterID;
 
-    private Date lastupdatetime;
+    private Date lastUpdateTime;
 
-    private String customerstatus;
+    private String customerStatus;
 
     private String remark;
 
-    private String lastloginip;
+    private String lastLoginIp;
 
-    private Date lastlogintime;
+    private Date lastLoginTime;
 
-    private Integer logincount;
+    private Integer loginCount;
 
-    private Integer passworderrortimes;
+    private Integer passwordErrorTimes;
 
-    private Date passwordlocktime;
-
+    private Date passwordLockTime;
+    
     public Customer(){}
-    public Customer(String cellphone){
-    	this.cellphone=cellphone;
+    
+    public Customer(String cellPhone){
+    	this.cellPhone=cellPhone;
+    }
+    public Long getCustomerID() {
+        return customerID;
     }
 
-    public Long getCustomerid() {
-        return customerid;
+    public void setCustomerID(Long customerID) {
+        this.customerID = customerID;
     }
 
-    public void setCustomerid(Long customerid) {
-        this.customerid = customerid;
+    public Long getUserID() {
+        return userID;
     }
 
-    public Long getUserid() {
-        return userid;
+    public void setUserID(Long userID) {
+        this.userID = userID;
     }
 
-    public void setUserid(Long userid) {
-        this.userid = userid;
+    public Long getAccountID() {
+        return accountID;
     }
 
-    public Long getAccountid() {
-        return accountid;
+    public void setAccountID(Long accountID) {
+        this.accountID = accountID;
     }
 
-    public void setAccountid(Long accountid) {
-        this.accountid = accountid;
+    public String getCustomerType() {
+        return customerType;
     }
 
-    public String getCustomertype() {
-        return customertype;
+    public void setCustomerType(String customerType) {
+        this.customerType = customerType == null ? null : customerType.trim();
     }
 
-    public void setCustomertype(String customertype) {
-        this.customertype = customertype == null ? null : customertype.trim();
+    public String getCustomerCode() {
+        return customerCode;
     }
 
-    public String getCustomercode() {
-        return customercode;
-    }
-
-    public void setCustomercode(String customercode) {
-        this.customercode = customercode == null ? null : customercode.trim();
+    public void setCustomerCode(String customerCode) {
+        this.customerCode = customerCode == null ? null : customerCode.trim();
     }
 
     public String getName() {
@@ -122,12 +122,12 @@ public class Customer {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getEname() {
-        return ename;
+    public String getEName() {
+        return EName;
     }
 
-    public void setEname(String ename) {
-        this.ename = ename == null ? null : ename.trim();
+    public void setEName(String EName) {
+        this.EName = EName == null ? null : EName.trim();
     }
 
     public String getAlias() {
@@ -138,44 +138,44 @@ public class Customer {
         this.alias = alias == null ? null : alias.trim();
     }
 
-    public String getLoginaccount() {
-        return loginaccount;
+    public String getLoginAccount() {
+        return loginAccount;
     }
 
-    public void setLoginaccount(String loginaccount) {
-        this.loginaccount = loginaccount == null ? null : loginaccount.trim();
+    public void setLoginAccount(String loginAccount) {
+        this.loginAccount = loginAccount == null ? null : loginAccount.trim();
     }
 
-    public String getLoginpassword() {
-        return loginpassword;
+    public String getLoginPassword() {
+        return loginPassword;
     }
 
-    public void setLoginpassword(String loginpassword) {
-        this.loginpassword = loginpassword == null ? null : loginpassword.trim();
+    public void setLoginPassword(String loginPassword) {
+        this.loginPassword = loginPassword == null ? null : loginPassword.trim();
     }
 
-    public Date getLoginpawwrodvalidity() {
-        return loginpawwrodvalidity;
+    public Date getLoginPawwrodValidity() {
+        return loginPawwrodValidity;
     }
 
-    public void setLoginpawwrodvalidity(Date loginpawwrodvalidity) {
-        this.loginpawwrodvalidity = loginpawwrodvalidity;
+    public void setLoginPawwrodValidity(Date loginPawwrodValidity) {
+        this.loginPawwrodValidity = loginPawwrodValidity;
     }
 
-    public String getPaypassword() {
-        return paypassword;
+    public String getPayPassword() {
+        return payPassword;
     }
 
-    public void setPaypassword(String paypassword) {
-        this.paypassword = paypassword == null ? null : paypassword.trim();
+    public void setPayPassword(String payPassword) {
+        this.payPassword = payPassword == null ? null : payPassword.trim();
     }
 
-    public String getBillsendtype() {
-        return billsendtype;
+    public String getBillSendType() {
+        return billSendType;
     }
 
-    public void setBillsendtype(String billsendtype) {
-        this.billsendtype = billsendtype == null ? null : billsendtype.trim();
+    public void setBillSendType(String billSendType) {
+        this.billSendType = billSendType == null ? null : billSendType.trim();
     }
 
     public String getEmail() {
@@ -186,20 +186,20 @@ public class Customer {
         this.email = email == null ? null : email.trim();
     }
 
-    public String getCellphone() {
-        return cellphone;
+    public String getCellPhone() {
+        return cellPhone;
     }
 
-    public void setCellphone(String cellphone) {
-        this.cellphone = cellphone == null ? null : cellphone.trim();
+    public void setCellPhone(String cellPhone) {
+        this.cellPhone = cellPhone == null ? null : cellPhone.trim();
     }
 
-    public String getFixtel() {
-        return fixtel;
+    public String getFixTel() {
+        return fixTel;
     }
 
-    public void setFixtel(String fixtel) {
-        this.fixtel = fixtel == null ? null : fixtel.trim();
+    public void setFixTel(String fixTel) {
+        this.fixTel = fixTel == null ? null : fixTel.trim();
     }
 
     public String getAddress() {
@@ -210,12 +210,12 @@ public class Customer {
         this.address = address == null ? null : address.trim();
     }
 
-    public String getPostcode() {
-        return postcode;
+    public String getPostCode() {
+        return postCode;
     }
 
-    public void setPostcode(String postcode) {
-        this.postcode = postcode == null ? null : postcode.trim();
+    public void setPostCode(String postCode) {
+        this.postCode = postCode == null ? null : postCode.trim();
     }
 
     public String getFax() {
@@ -226,68 +226,68 @@ public class Customer {
         this.fax = fax == null ? null : fax.trim();
     }
 
-    public String getChannelcode() {
-        return channelcode;
+    public String getChannelCode() {
+        return channelCode;
     }
 
-    public void setChannelcode(String channelcode) {
-        this.channelcode = channelcode == null ? null : channelcode.trim();
+    public void setChannelCode(String channelCode) {
+        this.channelCode = channelCode == null ? null : channelCode.trim();
     }
 
-    public String getRefereetype() {
-        return refereetype;
+    public String getRefereeType() {
+        return refereeType;
     }
 
-    public void setRefereetype(String refereetype) {
-        this.refereetype = refereetype == null ? null : refereetype.trim();
+    public void setRefereeType(String refereeType) {
+        this.refereeType = refereeType == null ? null : refereeType.trim();
     }
 
-    public String getRefereeaccount() {
-        return refereeaccount;
+    public String getRefereeAccount() {
+        return refereeAccount;
     }
 
-    public void setRefereeaccount(String refereeaccount) {
-        this.refereeaccount = refereeaccount == null ? null : refereeaccount.trim();
+    public void setRefereeAccount(String refereeAccount) {
+        this.refereeAccount = refereeAccount == null ? null : refereeAccount.trim();
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Long getCreaterid() {
-        return createrid;
+    public Long getCreaterID() {
+        return createrID;
     }
 
-    public void setCreaterid(Long createrid) {
-        this.createrid = createrid;
+    public void setCreaterID(Long createrID) {
+        this.createrID = createrID;
     }
 
-    public Long getLastupdaterid() {
-        return lastupdaterid;
+    public Long getLastUpdaterID() {
+        return lastUpdaterID;
     }
 
-    public void setLastupdaterid(Long lastupdaterid) {
-        this.lastupdaterid = lastupdaterid;
+    public void setLastUpdaterID(Long lastUpdaterID) {
+        this.lastUpdaterID = lastUpdaterID;
     }
 
-    public Date getLastupdatetime() {
-        return lastupdatetime;
+    public Date getLastUpdateTime() {
+        return lastUpdateTime;
     }
 
-    public void setLastupdatetime(Date lastupdatetime) {
-        this.lastupdatetime = lastupdatetime;
+    public void setLastUpdateTime(Date lastUpdateTime) {
+        this.lastUpdateTime = lastUpdateTime;
     }
 
-    public String getCustomerstatus() {
-        return customerstatus;
+    public String getCustomerStatus() {
+        return customerStatus;
     }
 
-    public void setCustomerstatus(String customerstatus) {
-        this.customerstatus = customerstatus == null ? null : customerstatus.trim();
+    public void setCustomerStatus(String customerStatus) {
+        this.customerStatus = customerStatus == null ? null : customerStatus.trim();
     }
 
     public String getRemark() {
@@ -298,43 +298,43 @@ public class Customer {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public String getLastloginip() {
-        return lastloginip;
+    public String getLastLoginIp() {
+        return lastLoginIp;
     }
 
-    public void setLastloginip(String lastloginip) {
-        this.lastloginip = lastloginip == null ? null : lastloginip.trim();
+    public void setLastLoginIp(String lastLoginIp) {
+        this.lastLoginIp = lastLoginIp == null ? null : lastLoginIp.trim();
     }
 
-    public Date getLastlogintime() {
-        return lastlogintime;
+    public Date getLastLoginTime() {
+        return lastLoginTime;
     }
 
-    public void setLastlogintime(Date lastlogintime) {
-        this.lastlogintime = lastlogintime;
+    public void setLastLoginTime(Date lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
     }
 
-    public Integer getLogincount() {
-        return logincount;
+    public Integer getLoginCount() {
+        return loginCount;
     }
 
-    public void setLogincount(Integer logincount) {
-        this.logincount = logincount;
+    public void setLoginCount(Integer loginCount) {
+        this.loginCount = loginCount;
     }
 
-    public Integer getPassworderrortimes() {
-        return passworderrortimes;
+    public Integer getPasswordErrorTimes() {
+        return passwordErrorTimes;
     }
 
-    public void setPassworderrortimes(Integer passworderrortimes) {
-        this.passworderrortimes = passworderrortimes;
+    public void setPasswordErrorTimes(Integer passwordErrorTimes) {
+        this.passwordErrorTimes = passwordErrorTimes;
     }
 
-    public Date getPasswordlocktime() {
-        return passwordlocktime;
+    public Date getPasswordLockTime() {
+        return passwordLockTime;
     }
 
-    public void setPasswordlocktime(Date passwordlocktime) {
-        this.passwordlocktime = passwordlocktime;
+    public void setPasswordLockTime(Date passwordLockTime) {
+        this.passwordLockTime = passwordLockTime;
     }
 }

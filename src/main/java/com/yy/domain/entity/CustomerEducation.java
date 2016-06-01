@@ -3,13 +3,13 @@ package com.yy.domain.entity;
 import java.util.Date;
 
 public class CustomerEducation {
-    private Long customereducationid;
+    private Long customerEducationID;
 
-    private Long customerid;
+    private Long customerID;
 
-    private String schoolname;
+    private String schoolName;
 
-    private Boolean iskeyschool;
+    private Boolean isKeySchool;
 
     private String education;
 
@@ -17,44 +17,44 @@ public class CustomerEducation {
 
     private String major;
 
-    private Boolean isfulltime;
+    private Boolean isFullTime;
 
-    private Long honorcertification;
+    private Long honorCertification;
 
-    private Date gradeationdate;
+    private Date gradeationDate;
 
-    private Date enterdate;
+    private Date enterDate;
 
-    public Long getCustomereducationid() {
-        return customereducationid;
+    public Long getCustomerEducationID() {
+        return customerEducationID;
     }
 
-    public void setCustomereducationid(Long customereducationid) {
-        this.customereducationid = customereducationid;
+    public void setCustomerEducationID(Long customerEducationID) {
+        this.customerEducationID = customerEducationID;
     }
 
-    public Long getCustomerid() {
-        return customerid;
+    public Long getCustomerID() {
+        return customerID;
     }
 
-    public void setCustomerid(Long customerid) {
-        this.customerid = customerid;
+    public void setCustomerID(Long customerID) {
+        this.customerID = customerID;
     }
 
-    public String getSchoolname() {
-        return schoolname;
+    public String getSchoolName() {
+        return schoolName;
     }
 
-    public void setSchoolname(String schoolname) {
-        this.schoolname = schoolname == null ? null : schoolname.trim();
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName == null ? null : schoolName.trim();
     }
 
-    public Boolean getIskeyschool() {
-        return iskeyschool;
+    public Boolean getIsKeySchool() {
+        return isKeySchool;
     }
 
-    public void setIskeyschool(Boolean iskeyschool) {
-        this.iskeyschool = iskeyschool;
+    public void setIsKeySchool(Boolean isKeySchool) {
+        this.isKeySchool = isKeySchool;
     }
 
     public String getEducation() {
@@ -81,35 +81,35 @@ public class CustomerEducation {
         this.major = major == null ? null : major.trim();
     }
 
-    public Boolean getIsfulltime() {
-        return isfulltime;
+    public Boolean getIsFullTime() {
+        return isFullTime;
     }
 
-    public void setIsfulltime(Boolean isfulltime) {
-        this.isfulltime = isfulltime;
+    public void setIsFullTime(Boolean isFullTime) {
+        this.isFullTime = isFullTime;
     }
 
-    public Long getHonorcertification() {
-        return honorcertification;
+    public Long getHonorCertification() {
+        return honorCertification;
     }
 
-    public void setHonorcertification(Long honorcertification) {
-        this.honorcertification = honorcertification;
+    public void setHonorCertification(Long honorCertification) {
+        this.honorCertification = honorCertification;
     }
 
-    public Date getGradeationdate() {
-        return gradeationdate;
+    public Date getGradeationDate() {
+        return gradeationDate;
     }
 
-    public void setGradeationdate(Date gradeationdate) {
-        this.gradeationdate = gradeationdate;
+    public void setGradeationDate(Date gradeationDate) {
+        this.gradeationDate = gradeationDate;
     }
 
-    public Date getEnterdate() {
-        return enterdate;
+    public Date getEnterDate() {
+        return enterDate;
     }
 
-    public void setEnterdate(Date enterdate) {
-        this.enterdate = enterdate;
+    public void setEnterDate(Date enterDate) {
+        this.enterDate = enterDate;
     }
 }

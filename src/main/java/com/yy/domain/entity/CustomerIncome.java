@@ -1,66 +1,66 @@
 package com.yy.domain.entity;
 
 public class CustomerIncome {
-    private Long incomeid;
+    private Long incomeID;
 
-    private Long customerid;
+    private Long customerID;
 
-    private String incometype;
+    private String incomeType;
 
-    private String incomecurrency;
+    private String incomeCurrency;
 
-    private Float incomeamount;
+    private Float incomeAmount;
 
-    private String termtype;
+    private String termType;
 
     private String remark;
 
-    public Long getIncomeid() {
-        return incomeid;
+    public Long getIncomeID() {
+        return incomeID;
     }
 
-    public void setIncomeid(Long incomeid) {
-        this.incomeid = incomeid;
+    public void setIncomeID(Long incomeID) {
+        this.incomeID = incomeID;
     }
 
-    public Long getCustomerid() {
-        return customerid;
+    public Long getCustomerID() {
+        return customerID;
     }
 
-    public void setCustomerid(Long customerid) {
-        this.customerid = customerid;
+    public void setCustomerID(Long customerID) {
+        this.customerID = customerID;
     }
 
-    public String getIncometype() {
-        return incometype;
+    public String getIncomeType() {
+        return incomeType;
     }
 
-    public void setIncometype(String incometype) {
-        this.incometype = incometype == null ? null : incometype.trim();
+    public void setIncomeType(String incomeType) {
+        this.incomeType = incomeType == null ? null : incomeType.trim();
     }
 
-    public String getIncomecurrency() {
-        return incomecurrency;
+    public String getIncomeCurrency() {
+        return incomeCurrency;
     }
 
-    public void setIncomecurrency(String incomecurrency) {
-        this.incomecurrency = incomecurrency == null ? null : incomecurrency.trim();
+    public void setIncomeCurrency(String incomeCurrency) {
+        this.incomeCurrency = incomeCurrency == null ? null : incomeCurrency.trim();
     }
 
-    public Float getIncomeamount() {
-        return incomeamount;
+    public Float getIncomeAmount() {
+        return incomeAmount;
     }
 
-    public void setIncomeamount(Float incomeamount) {
-        this.incomeamount = incomeamount;
+    public void setIncomeAmount(Float incomeAmount) {
+        this.incomeAmount = incomeAmount;
     }
 
-    public String getTermtype() {
-        return termtype;
+    public String getTermType() {
+        return termType;
     }
 
-    public void setTermtype(String termtype) {
-        this.termtype = termtype == null ? null : termtype.trim();
+    public void setTermType(String termType) {
+        this.termType = termType == null ? null : termType.trim();
     }
 
     public String getRemark() {

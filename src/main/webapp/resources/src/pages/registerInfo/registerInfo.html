@@ -18,13 +18,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group" ng-class="{'has-error':registerForm.highestdegree.$invalid && !registerForm.highestdegree.$pristine}">
+                <div class="form-group" ng-class="{'has-error':registerForm.highestDegree.$invalid && !registerForm.highestDegree.$pristine}">
                     <label class="control-label col-xs-2">
                         <img src="../../resources/images/ioc09.png">
                     </label>
                     <div class="col-xs-10">
                         <div class="row">
-                            <select ng-model="params.highestdegree" name="highestdegree" class="form-control" required>
+                            <select ng-model="params.highestDegree" name="highestDegree" class="form-control" required>
                                 <option value="">请选择最高学历</option>
                                 <option value="高中">高中</option>
                                 <option value="大专">大专</option>
@@ -32,41 +32,41 @@
                                 <option value="硕士">硕士</option>
                                 <option value="博士">博士</option>
                             </select>
-                            <div ng-messages="registerForm.highestdegree.$error" ng-show="!registerForm.highestdegree.$pristine">
+                            <div ng-messages="registerForm.highestDegree.$error" ng-show="!registerForm.highestDegree.$pristine">
                                 <div ng-message="required" class="help-block">请选择学历</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="form-group" ng-class="{'has-error':registerForm.workinglife.$invalid && !registerForm.workinglife.$pristine}">
+                <div class="form-group" ng-class="{'has-error':registerForm.workingLife.$invalid && !registerForm.workingLife.$pristine}">
                     <label class="control-label col-xs-2">
                         <img src="../../resources/images/ioc10.png" alt="">
                     </label>
                     <div class="col-xs-10">
                         <div class="row">
-                            <select ng-model="params.workinglife" class="form-control" name="workinglife" required>
+                            <select ng-model="params.workingLife" class="form-control" name="workingLife" required>
                                 <option value="">请选择工作年限</option>
                                 <option value="0">0年</option>
                                 <option value="3">3年</option>
                             </select>
-                            <div ng-messages="registerForm.workinglife.$error" ng-show="!registerForm.workinglife.$pristine">
+                            <div ng-messages="registerForm.workingLife.$error" ng-show="!registerForm.workingLife.$pristine">
                                 <div ng-message="required" class="help-block">请选择学历</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="form-group" ng-class="{'has-error':registerForm.marriagetype.$invalid && !registerForm.marriagetype.$pristine}">
+                <div class="form-group" ng-class="{'has-error':registerForm.marriageType.$invalid && !registerForm.marriageType.$pristine}">
                     <label class="control-label col-xs-2">
                         <img src="../../resources/images/ioc11.png" alt="">
                     </label>
                     <div class="col-xs-10">
                         <div class="row">
-                            <select ng-model="params.marriagetype" class="form-control" name="marriagetype" required>
+                            <select ng-model="params.marriageType" class="form-control" name="marriageType" required>
                                 <option value="">请选择婚姻情况</option>
                                 <option value="0">已婚</option>
                                 <option value="1">未婚</option>
                             </select>
-                            <div ng-messages="registerForm.marriagetype.$error" ng-show="!registerForm.marriagetype.$pristine">
+                            <div ng-messages="registerForm.marriageType.$error" ng-show="!registerForm.marriageType.$pristine">
                                 <div ng-message="required" class="help-block">请选择学历</div>
                             </div>
                         </div>

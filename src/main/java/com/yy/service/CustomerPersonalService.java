@@ -22,7 +22,7 @@ public class CustomerPersonalService {
 	public void saveOrUpCustomerPersonal(HttpServletRequest request,CustomerPersonal customerPersonal){
 		Customer c=(Customer)request.getSession().getAttribute("customer");
 		if(c!=null)
-			customerPersonal.setCustomerid(c.getCustomerid());
+			customerPersonal.setCustomerID(c.getCustomerID());
 		customerPersonalDao.insertSelective(customerPersonal);
 
 	}

@@ -3,110 +3,110 @@ package com.yy.domain.entity;
 import java.util.Date;
 
 public class CustomerWorkexperience {
-    private Long workexperienceid;
+    private Long workExperienceID;
 
-    private Long customerid;
+    private Long customerID;
 
-    private String companyname;
+    private String companyName;
 
-    private Boolean iscurrentcompany;
+    private Boolean isCurrentCompany;
 
-    private Date startdate;
+    private Date startDate;
 
-    private Date enddate;
+    private Date endDate;
 
-    private String companypostcode;
+    private String companyPostCode;
 
-    private String companyaddress;
+    private String companyAddress;
 
-    private String companytype;
+    private String companyType;
 
-    private String companyindustry;
+    private String companyIndustry;
 
     private String department;
 
     private String role;
 
-    private String professionaltitle;
+    private String professionalTitle;
 
-    public Long getWorkexperienceid() {
-        return workexperienceid;
+    public Long getWorkExperienceID() {
+        return workExperienceID;
     }
 
-    public void setWorkexperienceid(Long workexperienceid) {
-        this.workexperienceid = workexperienceid;
+    public void setWorkExperienceID(Long workExperienceID) {
+        this.workExperienceID = workExperienceID;
     }
 
-    public Long getCustomerid() {
-        return customerid;
+    public Long getCustomerID() {
+        return customerID;
     }
 
-    public void setCustomerid(Long customerid) {
-        this.customerid = customerid;
+    public void setCustomerID(Long customerID) {
+        this.customerID = customerID;
     }
 
-    public String getCompanyname() {
-        return companyname;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setCompanyname(String companyname) {
-        this.companyname = companyname == null ? null : companyname.trim();
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName == null ? null : companyName.trim();
     }
 
-    public Boolean getIscurrentcompany() {
-        return iscurrentcompany;
+    public Boolean getIsCurrentCompany() {
+        return isCurrentCompany;
     }
 
-    public void setIscurrentcompany(Boolean iscurrentcompany) {
-        this.iscurrentcompany = iscurrentcompany;
+    public void setIsCurrentCompany(Boolean isCurrentCompany) {
+        this.isCurrentCompany = isCurrentCompany;
     }
 
-    public Date getStartdate() {
-        return startdate;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setStartdate(Date startdate) {
-        this.startdate = startdate;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public Date getEnddate() {
-        return enddate;
+    public Date getEndDate() {
+        return endDate;
     }
 
-    public void setEnddate(Date enddate) {
-        this.enddate = enddate;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
-    public String getCompanypostcode() {
-        return companypostcode;
+    public String getCompanyPostCode() {
+        return companyPostCode;
     }
 
-    public void setCompanypostcode(String companypostcode) {
-        this.companypostcode = companypostcode == null ? null : companypostcode.trim();
+    public void setCompanyPostCode(String companyPostCode) {
+        this.companyPostCode = companyPostCode == null ? null : companyPostCode.trim();
     }
 
-    public String getCompanyaddress() {
-        return companyaddress;
+    public String getCompanyAddress() {
+        return companyAddress;
     }
 
-    public void setCompanyaddress(String companyaddress) {
-        this.companyaddress = companyaddress == null ? null : companyaddress.trim();
+    public void setCompanyAddress(String companyAddress) {
+        this.companyAddress = companyAddress == null ? null : companyAddress.trim();
     }
 
-    public String getCompanytype() {
-        return companytype;
+    public String getCompanyType() {
+        return companyType;
     }
 
-    public void setCompanytype(String companytype) {
-        this.companytype = companytype == null ? null : companytype.trim();
+    public void setCompanyType(String companyType) {
+        this.companyType = companyType == null ? null : companyType.trim();
     }
 
-    public String getCompanyindustry() {
-        return companyindustry;
+    public String getCompanyIndustry() {
+        return companyIndustry;
     }
 
-    public void setCompanyindustry(String companyindustry) {
-        this.companyindustry = companyindustry == null ? null : companyindustry.trim();
+    public void setCompanyIndustry(String companyIndustry) {
+        this.companyIndustry = companyIndustry == null ? null : companyIndustry.trim();
     }
 
     public String getDepartment() {
@@ -125,11 +125,11 @@ public class CustomerWorkexperience {
         this.role = role == null ? null : role.trim();
     }
 
-    public String getProfessionaltitle() {
-        return professionaltitle;
+    public String getProfessionalTitle() {
+        return professionalTitle;
     }
 
-    public void setProfessionaltitle(String professionaltitle) {
-        this.professionaltitle = professionaltitle == null ? null : professionaltitle.trim();
+    public void setProfessionalTitle(String professionalTitle) {
+        this.professionalTitle = professionalTitle == null ? null : professionalTitle.trim();
     }
 }

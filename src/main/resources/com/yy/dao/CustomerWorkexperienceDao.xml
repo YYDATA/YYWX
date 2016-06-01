@@ -2,78 +2,78 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yy.dao.CustomerWorkexperienceDao" >
   <resultMap id="BaseResultMap" type="com.yy.domain.entity.CustomerWorkexperience" >
-    <id column="WorkExperienceID" property="workexperienceid" jdbcType="BIGINT" />
-    <result column="CustomerID" property="customerid" jdbcType="BIGINT" />
-    <result column="CompanyName" property="companyname" jdbcType="VARCHAR" />
-    <result column="IsCurrentCompany" property="iscurrentcompany" jdbcType="BIT" />
-    <result column="StartDate" property="startdate" jdbcType="DATE" />
-    <result column="EndDate" property="enddate" jdbcType="DATE" />
-    <result column="CompanyPostCode" property="companypostcode" jdbcType="CHAR" />
-    <result column="CompanyAddress" property="companyaddress" jdbcType="VARCHAR" />
-    <result column="CompanyType" property="companytype" jdbcType="VARCHAR" />
-    <result column="CompanyIndustry" property="companyindustry" jdbcType="VARCHAR" />
+    <id column="WorkExperienceID" property="workExperienceID" jdbcType="BIGINT" />
+    <result column="CustomerID" property="customerID" jdbcType="BIGINT" />
+    <result column="CompanyName" property="companyName" jdbcType="VARCHAR" />
+    <result column="IsCurrentCompany" property="isCurrentCompany" jdbcType="BIT" />
+    <result column="StartDate" property="startDate" jdbcType="DATE" />
+    <result column="EndDate" property="endDate" jdbcType="DATE" />
+    <result column="CompanyPostCode" property="companyPostCode" jdbcType="CHAR" />
+    <result column="CompanyAddress" property="companyAddress" jdbcType="VARCHAR" />
+    <result column="CompanyType" property="companyType" jdbcType="VARCHAR" />
+    <result column="CompanyIndustry" property="companyIndustry" jdbcType="VARCHAR" />
     <result column="Department" property="department" jdbcType="VARCHAR" />
     <result column="Role" property="role" jdbcType="VARCHAR" />
-    <result column="ProfessionalTitle" property="professionaltitle" jdbcType="VARCHAR" />
+    <result column="ProfessionalTitle" property="professionalTitle" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    WorkExperienceID, CustomerID, CompanyName, IsCurrentCompany, StartDate, EndDate,
-    CompanyPostCode, CompanyAddress, CompanyType, CompanyIndustry, Department, Role,
+    WorkExperienceID, CustomerID, CompanyName, IsCurrentCompany, StartDate, EndDate, 
+    CompanyPostCode, CompanyAddress, CompanyType, CompanyIndustry, Department, Role, 
     ProfessionalTitle
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-    select
+    select 
     <include refid="Base_Column_List" />
     from m_customer_workexperience
-    where WorkExperienceID = #{workexperienceid,jdbcType=BIGINT}
+    where WorkExperienceID = #{workExperienceID,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from m_customer_workexperience
-    where WorkExperienceID = #{workexperienceid,jdbcType=BIGINT}
+    where WorkExperienceID = #{workExperienceID,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.yy.domain.entity.CustomerWorkexperience" >
-    insert into m_customer_workexperience (WorkExperienceID, CustomerID, CompanyName,
-      IsCurrentCompany, StartDate, EndDate,
-      CompanyPostCode, CompanyAddress, CompanyType,
-      CompanyIndustry, Department, Role,
+    insert into m_customer_workexperience (WorkExperienceID, CustomerID, CompanyName, 
+      IsCurrentCompany, StartDate, EndDate, 
+      CompanyPostCode, CompanyAddress, CompanyType, 
+      CompanyIndustry, Department, Role, 
       ProfessionalTitle)
-    values (#{workexperienceid,jdbcType=BIGINT}, #{customerid,jdbcType=BIGINT}, #{companyname,jdbcType=VARCHAR},
-      #{iscurrentcompany,jdbcType=BIT}, #{startdate,jdbcType=DATE}, #{enddate,jdbcType=DATE},
-      #{companypostcode,jdbcType=CHAR}, #{companyaddress,jdbcType=VARCHAR}, #{companytype,jdbcType=VARCHAR},
-      #{companyindustry,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR},
-      #{professionaltitle,jdbcType=VARCHAR})
+    values (#{workExperienceID,jdbcType=BIGINT}, #{customerID,jdbcType=BIGINT}, #{companyName,jdbcType=VARCHAR}, 
+      #{isCurrentCompany,jdbcType=BIT}, #{startDate,jdbcType=DATE}, #{endDate,jdbcType=DATE}, 
+      #{companyPostCode,jdbcType=CHAR}, #{companyAddress,jdbcType=VARCHAR}, #{companyType,jdbcType=VARCHAR}, 
+      #{companyIndustry,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR}, 
+      #{professionalTitle,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yy.domain.entity.CustomerWorkexperience" >
     insert into m_customer_workexperience
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="workexperienceid != null" >
+      <if test="workExperienceID != null" >
         WorkExperienceID,
       </if>
-      <if test="customerid != null" >
+      <if test="customerID != null" >
         CustomerID,
       </if>
-      <if test="companyname != null" >
+      <if test="companyName != null" >
         CompanyName,
       </if>
-      <if test="iscurrentcompany != null" >
+      <if test="isCurrentCompany != null" >
         IsCurrentCompany,
       </if>
-      <if test="startdate != null" >
+      <if test="startDate != null" >
         StartDate,
       </if>
-      <if test="enddate != null" >
+      <if test="endDate != null" >
         EndDate,
       </if>
-      <if test="companypostcode != null" >
+      <if test="companyPostCode != null" >
         CompanyPostCode,
       </if>
-      <if test="companyaddress != null" >
+      <if test="companyAddress != null" >
         CompanyAddress,
       </if>
-      <if test="companytype != null" >
+      <if test="companyType != null" >
         CompanyType,
       </if>
-      <if test="companyindustry != null" >
+      <if test="companyIndustry != null" >
         CompanyIndustry,
       </if>
       <if test="department != null" >
@@ -82,40 +82,40 @@
       <if test="role != null" >
         Role,
       </if>
-      <if test="professionaltitle != null" >
+      <if test="professionalTitle != null" >
         ProfessionalTitle,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="workexperienceid != null" >
-        #{workexperienceid,jdbcType=BIGINT},
+      <if test="workExperienceID != null" >
+        #{workExperienceID,jdbcType=BIGINT},
       </if>
-      <if test="customerid != null" >
-        #{customerid,jdbcType=BIGINT},
+      <if test="customerID != null" >
+        #{customerID,jdbcType=BIGINT},
       </if>
-      <if test="companyname != null" >
-        #{companyname,jdbcType=VARCHAR},
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
       </if>
-      <if test="iscurrentcompany != null" >
-        #{iscurrentcompany,jdbcType=BIT},
+      <if test="isCurrentCompany != null" >
+        #{isCurrentCompany,jdbcType=BIT},
       </if>
-      <if test="startdate != null" >
-        #{startdate,jdbcType=DATE},
+      <if test="startDate != null" >
+        #{startDate,jdbcType=DATE},
       </if>
-      <if test="enddate != null" >
-        #{enddate,jdbcType=DATE},
+      <if test="endDate != null" >
+        #{endDate,jdbcType=DATE},
       </if>
-      <if test="companypostcode != null" >
-        #{companypostcode,jdbcType=CHAR},
+      <if test="companyPostCode != null" >
+        #{companyPostCode,jdbcType=CHAR},
       </if>
-      <if test="companyaddress != null" >
-        #{companyaddress,jdbcType=VARCHAR},
+      <if test="companyAddress != null" >
+        #{companyAddress,jdbcType=VARCHAR},
       </if>
-      <if test="companytype != null" >
-        #{companytype,jdbcType=VARCHAR},
+      <if test="companyType != null" >
+        #{companyType,jdbcType=VARCHAR},
       </if>
-      <if test="companyindustry != null" >
-        #{companyindustry,jdbcType=VARCHAR},
+      <if test="companyIndustry != null" >
+        #{companyIndustry,jdbcType=VARCHAR},
       </if>
       <if test="department != null" >
         #{department,jdbcType=VARCHAR},
@@ -123,40 +123,40 @@
       <if test="role != null" >
         #{role,jdbcType=VARCHAR},
       </if>
-      <if test="professionaltitle != null" >
-        #{professionaltitle,jdbcType=VARCHAR},
+      <if test="professionalTitle != null" >
+        #{professionalTitle,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.yy.domain.entity.CustomerWorkexperience" >
     update m_customer_workexperience
     <set >
-      <if test="customerid != null" >
-        CustomerID = #{customerid,jdbcType=BIGINT},
+      <if test="customerID != null" >
+        CustomerID = #{customerID,jdbcType=BIGINT},
       </if>
-      <if test="companyname != null" >
-        CompanyName = #{companyname,jdbcType=VARCHAR},
+      <if test="companyName != null" >
+        CompanyName = #{companyName,jdbcType=VARCHAR},
       </if>
-      <if test="iscurrentcompany != null" >
-        IsCurrentCompany = #{iscurrentcompany,jdbcType=BIT},
+      <if test="isCurrentCompany != null" >
+        IsCurrentCompany = #{isCurrentCompany,jdbcType=BIT},
       </if>
-      <if test="startdate != null" >
-        StartDate = #{startdate,jdbcType=DATE},
+      <if test="startDate != null" >
+        StartDate = #{startDate,jdbcType=DATE},
       </if>
-      <if test="enddate != null" >
-        EndDate = #{enddate,jdbcType=DATE},
+      <if test="endDate != null" >
+        EndDate = #{endDate,jdbcType=DATE},
       </if>
-      <if test="companypostcode != null" >
-        CompanyPostCode = #{companypostcode,jdbcType=CHAR},
+      <if test="companyPostCode != null" >
+        CompanyPostCode = #{companyPostCode,jdbcType=CHAR},
       </if>
-      <if test="companyaddress != null" >
-        CompanyAddress = #{companyaddress,jdbcType=VARCHAR},
+      <if test="companyAddress != null" >
+        CompanyAddress = #{companyAddress,jdbcType=VARCHAR},
       </if>
-      <if test="companytype != null" >
-        CompanyType = #{companytype,jdbcType=VARCHAR},
+      <if test="companyType != null" >
+        CompanyType = #{companyType,jdbcType=VARCHAR},
       </if>
-      <if test="companyindustry != null" >
-        CompanyIndustry = #{companyindustry,jdbcType=VARCHAR},
+      <if test="companyIndustry != null" >
+        CompanyIndustry = #{companyIndustry,jdbcType=VARCHAR},
       </if>
       <if test="department != null" >
         Department = #{department,jdbcType=VARCHAR},
@@ -164,26 +164,26 @@
       <if test="role != null" >
         Role = #{role,jdbcType=VARCHAR},
       </if>
-      <if test="professionaltitle != null" >
-        ProfessionalTitle = #{professionaltitle,jdbcType=VARCHAR},
+      <if test="professionalTitle != null" >
+        ProfessionalTitle = #{professionalTitle,jdbcType=VARCHAR},
       </if>
     </set>
-    where WorkExperienceID = #{workexperienceid,jdbcType=BIGINT}
+    where WorkExperienceID = #{workExperienceID,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.yy.domain.entity.CustomerWorkexperience" >
     update m_customer_workexperience
-    set CustomerID = #{customerid,jdbcType=BIGINT},
-      CompanyName = #{companyname,jdbcType=VARCHAR},
-      IsCurrentCompany = #{iscurrentcompany,jdbcType=BIT},
-      StartDate = #{startdate,jdbcType=DATE},
-      EndDate = #{enddate,jdbcType=DATE},
-      CompanyPostCode = #{companypostcode,jdbcType=CHAR},
-      CompanyAddress = #{companyaddress,jdbcType=VARCHAR},
-      CompanyType = #{companytype,jdbcType=VARCHAR},
-      CompanyIndustry = #{companyindustry,jdbcType=VARCHAR},
+    set CustomerID = #{customerID,jdbcType=BIGINT},
+      CompanyName = #{companyName,jdbcType=VARCHAR},
+      IsCurrentCompany = #{isCurrentCompany,jdbcType=BIT},
+      StartDate = #{startDate,jdbcType=DATE},
+      EndDate = #{endDate,jdbcType=DATE},
+      CompanyPostCode = #{companyPostCode,jdbcType=CHAR},
+      CompanyAddress = #{companyAddress,jdbcType=VARCHAR},
+      CompanyType = #{companyType,jdbcType=VARCHAR},
+      CompanyIndustry = #{companyIndustry,jdbcType=VARCHAR},
       Department = #{department,jdbcType=VARCHAR},
       Role = #{role,jdbcType=VARCHAR},
-      ProfessionalTitle = #{professionaltitle,jdbcType=VARCHAR}
-    where WorkExperienceID = #{workexperienceid,jdbcType=BIGINT}
+      ProfessionalTitle = #{professionalTitle,jdbcType=VARCHAR}
+    where WorkExperienceID = #{workExperienceID,jdbcType=BIGINT}
   </update>
 </mapper>

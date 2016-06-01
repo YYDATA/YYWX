@@ -2,428 +2,430 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yy.dao.CustomerDao" >
   <resultMap id="BaseResultMap" type="com.yy.domain.entity.Customer" >
-    <id column="CustomerID" property="customerid" jdbcType="BIGINT" />
-    <result column="UserID" property="userid" jdbcType="BIGINT" />
-    <result column="AccountID" property="accountid" jdbcType="BIGINT" />
-    <result column="CustomerType" property="customertype" jdbcType="VARCHAR" />
-    <result column="CustomerCode" property="customercode" jdbcType="VARCHAR" />
+    <id column="CustomerID" property="customerID" jdbcType="BIGINT" />
+    <result column="UserID" property="userID" jdbcType="BIGINT" />
+    <result column="AccountID" property="accountID" jdbcType="BIGINT" />
+    <result column="CustomerType" property="customerType" jdbcType="VARCHAR" />
+    <result column="CustomerCode" property="customerCode" jdbcType="VARCHAR" />
     <result column="Name" property="name" jdbcType="VARCHAR" />
-    <result column="EName" property="ename" jdbcType="VARCHAR" />
+    <result column="EName" property="EName" jdbcType="VARCHAR" />
     <result column="Alias" property="alias" jdbcType="VARCHAR" />
-    <result column="LoginAccount" property="loginaccount" jdbcType="VARCHAR" />
-    <result column="LoginPassword" property="loginpassword" jdbcType="VARCHAR" />
-    <result column="LoginPawwrodValidity" property="loginpawwrodvalidity" jdbcType="DATE" />
-    <result column="PayPassword" property="paypassword" jdbcType="VARCHAR" />
-    <result column="BillSendType" property="billsendtype" jdbcType="CHAR" />
+    <result column="LoginAccount" property="loginAccount" jdbcType="VARCHAR" />
+    <result column="LoginPassword" property="loginPassword" jdbcType="VARCHAR" />
+    <result column="LoginPawwrodValidity" property="loginPawwrodValidity" jdbcType="DATE" />
+    <result column="PayPassword" property="payPassword" jdbcType="VARCHAR" />
+    <result column="BillSendType" property="billSendType" jdbcType="CHAR" />
     <result column="Email" property="email" jdbcType="VARCHAR" />
-    <result column="CellPhone" property="cellphone" jdbcType="CHAR" />
-    <result column="FixTel" property="fixtel" jdbcType="VARCHAR" />
+    <result column="CellPhone" property="cellPhone" jdbcType="CHAR" />
+    <result column="FixTel" property="fixTel" jdbcType="VARCHAR" />
     <result column="Address" property="address" jdbcType="VARCHAR" />
-    <result column="PostCode" property="postcode" jdbcType="CHAR" />
+    <result column="PostCode" property="postCode" jdbcType="CHAR" />
     <result column="Fax" property="fax" jdbcType="VARCHAR" />
-    <result column="ChannelCode" property="channelcode" jdbcType="CHAR" />
-    <result column="RefereeType" property="refereetype" jdbcType="VARCHAR" />
-    <result column="RefereeAccount" property="refereeaccount" jdbcType="VARCHAR" />
-    <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
-    <result column="CreaterID" property="createrid" jdbcType="BIGINT" />
-    <result column="LastUpdaterID" property="lastupdaterid" jdbcType="BIGINT" />
-    <result column="LastUpdateTime" property="lastupdatetime" jdbcType="TIMESTAMP" />
-    <result column="CustomerStatus" property="customerstatus" jdbcType="CHAR" />
+    <result column="ChannelCode" property="channelCode" jdbcType="CHAR" />
+    <result column="RefereeType" property="refereeType" jdbcType="VARCHAR" />
+    <result column="RefereeAccount" property="refereeAccount" jdbcType="VARCHAR" />
+    <result column="CreateTime" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="CreaterID" property="createrID" jdbcType="BIGINT" />
+    <result column="LastUpdaterID" property="lastUpdaterID" jdbcType="BIGINT" />
+    <result column="LastUpdateTime" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="CustomerStatus" property="customerStatus" jdbcType="CHAR" />
     <result column="Remark" property="remark" jdbcType="VARCHAR" />
-    <result column="LastLoginIp" property="lastloginip" jdbcType="CHAR" />
-    <result column="LastLoginTime" property="lastlogintime" jdbcType="TIMESTAMP" />
-    <result column="LoginCount" property="logincount" jdbcType="INTEGER" />
-    <result column="PasswordErrorTimes" property="passworderrortimes" jdbcType="INTEGER" />
-    <result column="PasswordLockTime" property="passwordlocktime" jdbcType="TIMESTAMP" />
+    <result column="LastLoginIp" property="lastLoginIp" jdbcType="CHAR" />
+    <result column="LastLoginTime" property="lastLoginTime" jdbcType="TIMESTAMP" />
+    <result column="LoginCount" property="loginCount" jdbcType="INTEGER" />
+    <result column="PasswordErrorTimes" property="passwordErrorTimes" jdbcType="INTEGER" />
+    <result column="PasswordLockTime" property="passwordLockTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    CustomerID, UserID, AccountID, CustomerType, CustomerCode, Name, EName, Alias, LoginAccount,
-    LoginPassword, LoginPawwrodValidity, PayPassword, BillSendType, Email, CellPhone,
-    FixTel, Address, PostCode, Fax, ChannelCode, RefereeType, RefereeAccount, CreateTime,
-    CreaterID, LastUpdaterID, LastUpdateTime, CustomerStatus, Remark, LastLoginIp, LastLoginTime,
+    CustomerID, UserID, AccountID, CustomerType, CustomerCode, Name, EName, Alias, LoginAccount, 
+    LoginPassword, LoginPawwrodValidity, PayPassword, BillSendType, Email, CellPhone, 
+    FixTel, Address, PostCode, Fax, ChannelCode, RefereeType, RefereeAccount, CreateTime, 
+    CreaterID, LastUpdaterID, LastUpdateTime, CustomerStatus, Remark, LastLoginIp, LastLoginTime, 
     LoginCount, PasswordErrorTimes, PasswordLockTime
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-    select
+    select 
     <include refid="Base_Column_List" />
     from m_customer
-    where CustomerID = #{customerid,jdbcType=BIGINT}
+    where CustomerID = #{customerID,jdbcType=BIGINT}
   </select>
   <select id="getCustomer" parameterType="com.yy.domain.entity.Customer" resultMap="BaseResultMap">
   	select
     <include refid="Base_Column_List" />
     from m_customer
-    where CellPhone = #{cellphone,jdbcType=CHAR}
+    where CellPhone = #{cellPhone,jdbcType=CHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from m_customer
-    where CustomerID = #{customerid,jdbcType=BIGINT}
+    where CustomerID = #{customerID,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yy.domain.entity.Customer" keyProperty="customerid" useGeneratedKeys="true">
-    insert into m_customer (CustomerID, UserID, AccountID,
-      CustomerType, CustomerCode, Name,
-      EName, Alias, LoginAccount,
-      LoginPassword, LoginPawwrodValidity, PayPassword,
-      BillSendType, Email, CellPhone,
-      FixTel, Address, PostCode,
-      Fax, ChannelCode, RefereeType,
-      RefereeAccount, CreateTime, CreaterID,
-      LastUpdaterID, LastUpdateTime, CustomerStatus,
-      Remark, LastLoginIp, LastLoginTime,
-      LoginCount, PasswordErrorTimes, PasswordLockTime)
-    values (#{customerid,jdbcType=BIGINT}, #{userid,jdbcType=BIGINT}, #{accountid,jdbcType=BIGINT},
-      #{customertype,jdbcType=VARCHAR}, #{customercode,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
-      #{ename,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, #{loginaccount,jdbcType=VARCHAR},
-      #{loginpassword,jdbcType=VARCHAR}, #{loginpawwrodvalidity,jdbcType=DATE}, #{paypassword,jdbcType=VARCHAR},
-      #{billsendtype,jdbcType=CHAR}, #{email,jdbcType=VARCHAR}, #{cellphone,jdbcType=CHAR},
-      #{fixtel,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{postcode,jdbcType=CHAR},
-      #{fax,jdbcType=VARCHAR}, #{channelcode,jdbcType=CHAR}, #{refereetype,jdbcType=VARCHAR},
-      #{refereeaccount,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{createrid,jdbcType=BIGINT},
-      #{lastupdaterid,jdbcType=BIGINT}, #{lastupdatetime,jdbcType=TIMESTAMP}, #{customerstatus,jdbcType=CHAR},
-      #{remark,jdbcType=VARCHAR}, #{lastloginip,jdbcType=CHAR}, #{lastlogintime,jdbcType=TIMESTAMP},
-      #{logincount,jdbcType=INTEGER}, #{passworderrortimes,jdbcType=INTEGER}, #{passwordlocktime,jdbcType=TIMESTAMP})
+  <insert id="insert" parameterType="com.yy.domain.entity.Customer" >
+    insert into m_customer (CustomerID, UserID, AccountID, 
+      CustomerType, CustomerCode, Name, 
+      EName, Alias, LoginAccount, 
+      LoginPassword, LoginPawwrodValidity, PayPassword, 
+      BillSendType, Email, CellPhone, 
+      FixTel, Address, PostCode, 
+      Fax, ChannelCode, RefereeType, 
+      RefereeAccount, CreateTime, CreaterID, 
+      LastUpdaterID, LastUpdateTime, CustomerStatus, 
+      Remark, LastLoginIp, LastLoginTime, 
+      LoginCount, PasswordErrorTimes, PasswordLockTime
+      )
+    values (#{customerID,jdbcType=BIGINT}, #{userID,jdbcType=BIGINT}, #{accountID,jdbcType=BIGINT}, 
+      #{customerType,jdbcType=VARCHAR}, #{customerCode,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{EName,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, #{loginAccount,jdbcType=VARCHAR}, 
+      #{loginPassword,jdbcType=VARCHAR}, #{loginPawwrodValidity,jdbcType=DATE}, #{payPassword,jdbcType=VARCHAR}, 
+      #{billSendType,jdbcType=CHAR}, #{email,jdbcType=VARCHAR}, #{cellPhone,jdbcType=CHAR}, 
+      #{fixTel,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{postCode,jdbcType=CHAR}, 
+      #{fax,jdbcType=VARCHAR}, #{channelCode,jdbcType=CHAR}, #{refereeType,jdbcType=VARCHAR}, 
+      #{refereeAccount,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createrID,jdbcType=BIGINT}, 
+      #{lastUpdaterID,jdbcType=BIGINT}, #{lastUpdateTime,jdbcType=TIMESTAMP}, #{customerStatus,jdbcType=CHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{lastLoginIp,jdbcType=CHAR}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
+      #{loginCount,jdbcType=INTEGER}, #{passwordErrorTimes,jdbcType=INTEGER}, #{passwordLockTime,jdbcType=TIMESTAMP}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.yy.domain.entity.Customer" keyProperty="customerid" useGeneratedKeys="true">
+  <insert id="insertSelective" parameterType="com.yy.domain.entity.Customer" keyProperty="customerID" useGeneratedKeys="true" >
     insert into m_customer
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="customerid != null" >
+      <if test="customerID != null" >
         CustomerID,
       </if>
-      <if test="userid != null" >
+      <if test="userID != null" >
         UserID,
       </if>
-      <if test="accountid != null" >
+      <if test="accountID != null" >
         AccountID,
       </if>
-      <if test="customertype != null" >
+      <if test="customerType != null" >
         CustomerType,
       </if>
-      <if test="customercode != null" >
+      <if test="customerCode != null" >
         CustomerCode,
       </if>
       <if test="name != null" >
         Name,
       </if>
-      <if test="ename != null" >
+      <if test="EName != null" >
         EName,
       </if>
       <if test="alias != null" >
         Alias,
       </if>
-      <if test="loginaccount != null" >
+      <if test="loginAccount != null" >
         LoginAccount,
       </if>
-      <if test="loginpassword != null" >
+      <if test="loginPassword != null" >
         LoginPassword,
       </if>
-      <if test="loginpawwrodvalidity != null" >
+      <if test="loginPawwrodValidity != null" >
         LoginPawwrodValidity,
       </if>
-      <if test="paypassword != null" >
+      <if test="payPassword != null" >
         PayPassword,
       </if>
-      <if test="billsendtype != null" >
+      <if test="billSendType != null" >
         BillSendType,
       </if>
       <if test="email != null" >
         Email,
       </if>
-      <if test="cellphone != null" >
+      <if test="cellPhone != null" >
         CellPhone,
       </if>
-      <if test="fixtel != null" >
+      <if test="fixTel != null" >
         FixTel,
       </if>
       <if test="address != null" >
         Address,
       </if>
-      <if test="postcode != null" >
+      <if test="postCode != null" >
         PostCode,
       </if>
       <if test="fax != null" >
         Fax,
       </if>
-      <if test="channelcode != null" >
+      <if test="channelCode != null" >
         ChannelCode,
       </if>
-      <if test="refereetype != null" >
+      <if test="refereeType != null" >
         RefereeType,
       </if>
-      <if test="refereeaccount != null" >
+      <if test="refereeAccount != null" >
         RefereeAccount,
       </if>
-      <if test="createtime != null" >
+      <if test="createTime != null" >
         CreateTime,
       </if>
-      <if test="createrid != null" >
+      <if test="createrID != null" >
         CreaterID,
       </if>
-      <if test="lastupdaterid != null" >
+      <if test="lastUpdaterID != null" >
         LastUpdaterID,
       </if>
-      <if test="lastupdatetime != null" >
+      <if test="lastUpdateTime != null" >
         LastUpdateTime,
       </if>
-      <if test="customerstatus != null" >
+      <if test="customerStatus != null" >
         CustomerStatus,
       </if>
       <if test="remark != null" >
         Remark,
       </if>
-      <if test="lastloginip != null" >
+      <if test="lastLoginIp != null" >
         LastLoginIp,
       </if>
-      <if test="lastlogintime != null" >
+      <if test="lastLoginTime != null" >
         LastLoginTime,
       </if>
-      <if test="logincount != null" >
+      <if test="loginCount != null" >
         LoginCount,
       </if>
-      <if test="passworderrortimes != null" >
+      <if test="passwordErrorTimes != null" >
         PasswordErrorTimes,
       </if>
-      <if test="passwordlocktime != null" >
+      <if test="passwordLockTime != null" >
         PasswordLockTime,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="customerid != null" >
-        #{customerid,jdbcType=BIGINT},
+      <if test="customerID != null" >
+        #{customerID,jdbcType=BIGINT},
       </if>
-      <if test="userid != null" >
-        #{userid,jdbcType=BIGINT},
+      <if test="userID != null" >
+        #{userID,jdbcType=BIGINT},
       </if>
-      <if test="accountid != null" >
-        #{accountid,jdbcType=BIGINT},
+      <if test="accountID != null" >
+        #{accountID,jdbcType=BIGINT},
       </if>
-      <if test="customertype != null" >
-        #{customertype,jdbcType=VARCHAR},
+      <if test="customerType != null" >
+        #{customerType,jdbcType=VARCHAR},
       </if>
-      <if test="customercode != null" >
-        #{customercode,jdbcType=VARCHAR},
+      <if test="customerCode != null" >
+        #{customerCode,jdbcType=VARCHAR},
       </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="ename != null" >
-        #{ename,jdbcType=VARCHAR},
+      <if test="EName != null" >
+        #{EName,jdbcType=VARCHAR},
       </if>
       <if test="alias != null" >
         #{alias,jdbcType=VARCHAR},
       </if>
-      <if test="loginaccount != null" >
-        #{loginaccount,jdbcType=VARCHAR},
+      <if test="loginAccount != null" >
+        #{loginAccount,jdbcType=VARCHAR},
       </if>
-      <if test="loginpassword != null" >
-        #{loginpassword,jdbcType=VARCHAR},
+      <if test="loginPassword != null" >
+        #{loginPassword,jdbcType=VARCHAR},
       </if>
-      <if test="loginpawwrodvalidity != null" >
-        #{loginpawwrodvalidity,jdbcType=DATE},
+      <if test="loginPawwrodValidity != null" >
+        #{loginPawwrodValidity,jdbcType=DATE},
       </if>
-      <if test="paypassword != null" >
-        #{paypassword,jdbcType=VARCHAR},
+      <if test="payPassword != null" >
+        #{payPassword,jdbcType=VARCHAR},
       </if>
-      <if test="billsendtype != null" >
-        #{billsendtype,jdbcType=CHAR},
+      <if test="billSendType != null" >
+        #{billSendType,jdbcType=CHAR},
       </if>
       <if test="email != null" >
         #{email,jdbcType=VARCHAR},
       </if>
-      <if test="cellphone != null" >
-        #{cellphone,jdbcType=CHAR},
+      <if test="cellPhone != null" >
+        #{cellPhone,jdbcType=CHAR},
       </if>
-      <if test="fixtel != null" >
-        #{fixtel,jdbcType=VARCHAR},
+      <if test="fixTel != null" >
+        #{fixTel,jdbcType=VARCHAR},
       </if>
       <if test="address != null" >
         #{address,jdbcType=VARCHAR},
       </if>
-      <if test="postcode != null" >
-        #{postcode,jdbcType=CHAR},
+      <if test="postCode != null" >
+        #{postCode,jdbcType=CHAR},
       </if>
       <if test="fax != null" >
         #{fax,jdbcType=VARCHAR},
       </if>
-      <if test="channelcode != null" >
-        #{channelcode,jdbcType=CHAR},
+      <if test="channelCode != null" >
+        #{channelCode,jdbcType=CHAR},
       </if>
-      <if test="refereetype != null" >
-        #{refereetype,jdbcType=VARCHAR},
+      <if test="refereeType != null" >
+        #{refereeType,jdbcType=VARCHAR},
       </if>
-      <if test="refereeaccount != null" >
-        #{refereeaccount,jdbcType=VARCHAR},
+      <if test="refereeAccount != null" >
+        #{refereeAccount,jdbcType=VARCHAR},
       </if>
-      <if test="createtime != null" >
-        #{createtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="createrid != null" >
-        #{createrid,jdbcType=BIGINT},
+      <if test="createrID != null" >
+        #{createrID,jdbcType=BIGINT},
       </if>
-      <if test="lastupdaterid != null" >
-        #{lastupdaterid,jdbcType=BIGINT},
+      <if test="lastUpdaterID != null" >
+        #{lastUpdaterID,jdbcType=BIGINT},
       </if>
-      <if test="lastupdatetime != null" >
-        #{lastupdatetime,jdbcType=TIMESTAMP},
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="customerstatus != null" >
-        #{customerstatus,jdbcType=CHAR},
+      <if test="customerStatus != null" >
+        #{customerStatus,jdbcType=CHAR},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="lastloginip != null" >
-        #{lastloginip,jdbcType=CHAR},
+      <if test="lastLoginIp != null" >
+        #{lastLoginIp,jdbcType=CHAR},
       </if>
-      <if test="lastlogintime != null" >
-        #{lastlogintime,jdbcType=TIMESTAMP},
+      <if test="lastLoginTime != null" >
+        #{lastLoginTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="logincount != null" >
-        #{logincount,jdbcType=INTEGER},
+      <if test="loginCount != null" >
+        #{loginCount,jdbcType=INTEGER},
       </if>
-      <if test="passworderrortimes != null" >
-        #{passworderrortimes,jdbcType=INTEGER},
+      <if test="passwordErrorTimes != null" >
+        #{passwordErrorTimes,jdbcType=INTEGER},
       </if>
-      <if test="passwordlocktime != null" >
-        #{passwordlocktime,jdbcType=TIMESTAMP},
+      <if test="passwordLockTime != null" >
+        #{passwordLockTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.yy.domain.entity.Customer" >
     update m_customer
     <set >
-      <if test="userid != null" >
-        UserID = #{userid,jdbcType=BIGINT},
+      <if test="userID != null" >
+        UserID = #{userID,jdbcType=BIGINT},
       </if>
-      <if test="accountid != null" >
-        AccountID = #{accountid,jdbcType=BIGINT},
+      <if test="accountID != null" >
+        AccountID = #{accountID,jdbcType=BIGINT},
       </if>
-      <if test="customertype != null" >
-        CustomerType = #{customertype,jdbcType=VARCHAR},
+      <if test="customerType != null" >
+        CustomerType = #{customerType,jdbcType=VARCHAR},
       </if>
-      <if test="customercode != null" >
-        CustomerCode = #{customercode,jdbcType=VARCHAR},
+      <if test="customerCode != null" >
+        CustomerCode = #{customerCode,jdbcType=VARCHAR},
       </if>
       <if test="name != null" >
         Name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="ename != null" >
-        EName = #{ename,jdbcType=VARCHAR},
+      <if test="EName != null" >
+        EName = #{EName,jdbcType=VARCHAR},
       </if>
       <if test="alias != null" >
         Alias = #{alias,jdbcType=VARCHAR},
       </if>
-      <if test="loginaccount != null" >
-        LoginAccount = #{loginaccount,jdbcType=VARCHAR},
+      <if test="loginAccount != null" >
+        LoginAccount = #{loginAccount,jdbcType=VARCHAR},
       </if>
-      <if test="loginpassword != null" >
-        LoginPassword = #{loginpassword,jdbcType=VARCHAR},
+      <if test="loginPassword != null" >
+        LoginPassword = #{loginPassword,jdbcType=VARCHAR},
       </if>
-      <if test="loginpawwrodvalidity != null" >
-        LoginPawwrodValidity = #{loginpawwrodvalidity,jdbcType=DATE},
+      <if test="loginPawwrodValidity != null" >
+        LoginPawwrodValidity = #{loginPawwrodValidity,jdbcType=DATE},
       </if>
-      <if test="paypassword != null" >
-        PayPassword = #{paypassword,jdbcType=VARCHAR},
+      <if test="payPassword != null" >
+        PayPassword = #{payPassword,jdbcType=VARCHAR},
       </if>
-      <if test="billsendtype != null" >
-        BillSendType = #{billsendtype,jdbcType=CHAR},
+      <if test="billSendType != null" >
+        BillSendType = #{billSendType,jdbcType=CHAR},
       </if>
       <if test="email != null" >
         Email = #{email,jdbcType=VARCHAR},
       </if>
-      <if test="cellphone != null" >
-        CellPhone = #{cellphone,jdbcType=CHAR},
+      <if test="cellPhone != null" >
+        CellPhone = #{cellPhone,jdbcType=CHAR},
       </if>
-      <if test="fixtel != null" >
-        FixTel = #{fixtel,jdbcType=VARCHAR},
+      <if test="fixTel != null" >
+        FixTel = #{fixTel,jdbcType=VARCHAR},
       </if>
       <if test="address != null" >
         Address = #{address,jdbcType=VARCHAR},
       </if>
-      <if test="postcode != null" >
-        PostCode = #{postcode,jdbcType=CHAR},
+      <if test="postCode != null" >
+        PostCode = #{postCode,jdbcType=CHAR},
       </if>
       <if test="fax != null" >
         Fax = #{fax,jdbcType=VARCHAR},
       </if>
-      <if test="channelcode != null" >
-        ChannelCode = #{channelcode,jdbcType=CHAR},
+      <if test="channelCode != null" >
+        ChannelCode = #{channelCode,jdbcType=CHAR},
       </if>
-      <if test="refereetype != null" >
-        RefereeType = #{refereetype,jdbcType=VARCHAR},
+      <if test="refereeType != null" >
+        RefereeType = #{refereeType,jdbcType=VARCHAR},
       </if>
-      <if test="refereeaccount != null" >
-        RefereeAccount = #{refereeaccount,jdbcType=VARCHAR},
+      <if test="refereeAccount != null" >
+        RefereeAccount = #{refereeAccount,jdbcType=VARCHAR},
       </if>
-      <if test="createtime != null" >
-        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null" >
+        CreateTime = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="createrid != null" >
-        CreaterID = #{createrid,jdbcType=BIGINT},
+      <if test="createrID != null" >
+        CreaterID = #{createrID,jdbcType=BIGINT},
       </if>
-      <if test="lastupdaterid != null" >
-        LastUpdaterID = #{lastupdaterid,jdbcType=BIGINT},
+      <if test="lastUpdaterID != null" >
+        LastUpdaterID = #{lastUpdaterID,jdbcType=BIGINT},
       </if>
-      <if test="lastupdatetime != null" >
-        LastUpdateTime = #{lastupdatetime,jdbcType=TIMESTAMP},
+      <if test="lastUpdateTime != null" >
+        LastUpdateTime = #{lastUpdateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="customerstatus != null" >
-        CustomerStatus = #{customerstatus,jdbcType=CHAR},
+      <if test="customerStatus != null" >
+        CustomerStatus = #{customerStatus,jdbcType=CHAR},
       </if>
       <if test="remark != null" >
         Remark = #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="lastloginip != null" >
-        LastLoginIp = #{lastloginip,jdbcType=CHAR},
+      <if test="lastLoginIp != null" >
+        LastLoginIp = #{lastLoginIp,jdbcType=CHAR},
       </if>
-      <if test="lastlogintime != null" >
-        LastLoginTime = #{lastlogintime,jdbcType=TIMESTAMP},
+      <if test="lastLoginTime != null" >
+        LastLoginTime = #{lastLoginTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="logincount != null" >
-        LoginCount = #{logincount,jdbcType=INTEGER},
+      <if test="loginCount != null" >
+        LoginCount = #{loginCount,jdbcType=INTEGER},
       </if>
-      <if test="passworderrortimes != null" >
-        PasswordErrorTimes = #{passworderrortimes,jdbcType=INTEGER},
+      <if test="passwordErrorTimes != null" >
+        PasswordErrorTimes = #{passwordErrorTimes,jdbcType=INTEGER},
       </if>
-      <if test="passwordlocktime != null" >
-        PasswordLockTime = #{passwordlocktime,jdbcType=TIMESTAMP},
+      <if test="passwordLockTime != null" >
+        PasswordLockTime = #{passwordLockTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where CustomerID = #{customerid,jdbcType=BIGINT}
+    where CustomerID = #{customerID,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.yy.domain.entity.Customer" >
     update m_customer
-    set UserID = #{userid,jdbcType=BIGINT},
-      AccountID = #{accountid,jdbcType=BIGINT},
-      CustomerType = #{customertype,jdbcType=VARCHAR},
-      CustomerCode = #{customercode,jdbcType=VARCHAR},
+    set UserID = #{userID,jdbcType=BIGINT},
+      AccountID = #{accountID,jdbcType=BIGINT},
+      CustomerType = #{customerType,jdbcType=VARCHAR},
+      CustomerCode = #{customerCode,jdbcType=VARCHAR},
       Name = #{name,jdbcType=VARCHAR},
-      EName = #{ename,jdbcType=VARCHAR},
+      EName = #{EName,jdbcType=VARCHAR},
       Alias = #{alias,jdbcType=VARCHAR},
-      LoginAccount = #{loginaccount,jdbcType=VARCHAR},
-      LoginPassword = #{loginpassword,jdbcType=VARCHAR},
-      LoginPawwrodValidity = #{loginpawwrodvalidity,jdbcType=DATE},
-      PayPassword = #{paypassword,jdbcType=VARCHAR},
-      BillSendType = #{billsendtype,jdbcType=CHAR},
+      LoginAccount = #{loginAccount,jdbcType=VARCHAR},
+      LoginPassword = #{loginPassword,jdbcType=VARCHAR},
+      LoginPawwrodValidity = #{loginPawwrodValidity,jdbcType=DATE},
+      PayPassword = #{payPassword,jdbcType=VARCHAR},
+      BillSendType = #{billSendType,jdbcType=CHAR},
       Email = #{email,jdbcType=VARCHAR},
-      CellPhone = #{cellphone,jdbcType=CHAR},
-      FixTel = #{fixtel,jdbcType=VARCHAR},
+      CellPhone = #{cellPhone,jdbcType=CHAR},
+      FixTel = #{fixTel,jdbcType=VARCHAR},
       Address = #{address,jdbcType=VARCHAR},
-      PostCode = #{postcode,jdbcType=CHAR},
+      PostCode = #{postCode,jdbcType=CHAR},
       Fax = #{fax,jdbcType=VARCHAR},
-      ChannelCode = #{channelcode,jdbcType=CHAR},
-      RefereeType = #{refereetype,jdbcType=VARCHAR},
-      RefereeAccount = #{refereeaccount,jdbcType=VARCHAR},
-      CreateTime = #{createtime,jdbcType=TIMESTAMP},
-      CreaterID = #{createrid,jdbcType=BIGINT},
-      LastUpdaterID = #{lastupdaterid,jdbcType=BIGINT},
-      LastUpdateTime = #{lastupdatetime,jdbcType=TIMESTAMP},
-      CustomerStatus = #{customerstatus,jdbcType=CHAR},
+      ChannelCode = #{channelCode,jdbcType=CHAR},
+      RefereeType = #{refereeType,jdbcType=VARCHAR},
+      RefereeAccount = #{refereeAccount,jdbcType=VARCHAR},
+      CreateTime = #{createTime,jdbcType=TIMESTAMP},
+      CreaterID = #{createrID,jdbcType=BIGINT},
+      LastUpdaterID = #{lastUpdaterID,jdbcType=BIGINT},
+      LastUpdateTime = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      CustomerStatus = #{customerStatus,jdbcType=CHAR},
       Remark = #{remark,jdbcType=VARCHAR},
-      LastLoginIp = #{lastloginip,jdbcType=CHAR},
-      LastLoginTime = #{lastlogintime,jdbcType=TIMESTAMP},
-      LoginCount = #{logincount,jdbcType=INTEGER},
-      PasswordErrorTimes = #{passworderrortimes,jdbcType=INTEGER},
-      PasswordLockTime = #{passwordlocktime,jdbcType=TIMESTAMP}
-    where CustomerID = #{customerid,jdbcType=BIGINT}
+      LastLoginIp = #{lastLoginIp,jdbcType=CHAR},
+      LastLoginTime = #{lastLoginTime,jdbcType=TIMESTAMP},
+      LoginCount = #{loginCount,jdbcType=INTEGER},
+      PasswordErrorTimes = #{passwordErrorTimes,jdbcType=INTEGER},
+      PasswordLockTime = #{passwordLockTime,jdbcType=TIMESTAMP}
+    where CustomerID = #{customerID,jdbcType=BIGINT}
   </update>
 </mapper>

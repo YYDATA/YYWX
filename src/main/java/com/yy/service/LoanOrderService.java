@@ -22,20 +22,20 @@ public class LoanOrderService {
 	public void saveOrUpLoadOrder(HttpServletRequest request,LoanOrder loanOrder){
 
 		//增加贷款记录前，查看有无客户信息(有：获取客户id，无：增加)
-		Customer customer = new Customer(loanOrder.getCellphone());
+		Customer customer = new Customer(loanOrder.getCellPhone());
 		List<Customer> listCustomer = customerService.getCustomer(customer);
 		//设置customerid
 		if(listCustomer.size()>0){
-			loanOrder.setCustomerid(listCustomer.get(0).getCustomerid());
+			loanOrder.setCustomerID(listCustomer.get(0).getCustomerID());
 			customer=listCustomer.get(0);
 		}else{
 			customerService.saveOrUpCustomer(request,customer);
-			loanOrder.setCustomerid(customer.getCustomerid());
+			loanOrder.setCustomerID(customer.getCustomerID());
 		}
 		if(customer!=null)
 			request.getSession().setAttribute("customer", customer);
-		loanOrder.setOrderdate(new Date());
-		loanOrder.setLoanordercode(getLoanOrderCode());
+		loanOrder.setOrderDate(new Date());
+		loanOrder.setLoanOrderCode(getLoanOrderCode());
 		loanOrderDao.insert(loanOrder);
 	}
 	/**

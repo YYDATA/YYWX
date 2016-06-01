@@ -20,7 +20,7 @@ public class CustomerEducationService {
 	private CustomerEducationDao customerEducationDao;
 
 	public void saveOrUpCustomerEducation(CustomerEducation customerEducation){
-		if(customerEducation!=null&&customerEducation.getCustomereducationid()!=null){
+		if(customerEducation!=null&&customerEducation.getCustomerEducationID()!=null){
 			customerEducationDao.updateByPrimaryKeySelective(customerEducation);
 		}else{
 			customerEducationDao.insertSelective(customerEducation);
@@ -30,7 +30,7 @@ public class CustomerEducationService {
 		List<CustomerEducation> list = customerEducationDao.getCustomerEducationByParam(customerEducation);
 		if(list.size()>0){
 			CustomerEducation c=list.get(0);
-			customerEducation.setCustomereducationid(c.getCustomereducationid());
+			customerEducation.setCustomerEducationID(c.getCustomerEducationID());
 		}
 		return customerEducation;
 	}

@@ -3,71 +3,71 @@ package com.yy.domain.entity;
 import java.util.Date;
 
 public class CustomerCertificate {
-    private Long customercertificateid;
+    private Long customerCertificateID;
 
-    private Long customerid;
+    private Long customerID;
 
-    private String certificatetype;
+    private String certificateType;
 
-    private String certificatecode;
+    private String certificateCode;
 
-    private Date certificatevaliddate;
+    private Date certificateValidDate;
 
-    private String cretificationstatue;
-    
-    public CustomerCertificate(Long customerid,String certificatetype,String certificatecode){
-    	this.customerid=customerid;
-    	this.certificatetype=certificatetype;
-    	this.certificatecode=certificatecode;
+    private String cretificationStatue;
+
+    public CustomerCertificate(Long customerID,String certificateType,String certificateCode){
+    	this.customerID=customerID;
+    	this.certificateType=certificateType;
+    	this.certificateCode=certificateCode;
     }
     
     public CustomerCertificate(){}
     
-    public Long getCustomercertificateid() {
-        return customercertificateid;
+    public Long getCustomerCertificateID() {
+        return customerCertificateID;
     }
 
-    public void setCustomercertificateid(Long customercertificateid) {
-        this.customercertificateid = customercertificateid;
+    public void setCustomerCertificateID(Long customerCertificateID) {
+        this.customerCertificateID = customerCertificateID;
     }
 
-    public Long getCustomerid() {
-        return customerid;
+    public Long getCustomerID() {
+        return customerID;
     }
 
-    public void setCustomerid(Long customerid) {
-        this.customerid = customerid;
+    public void setCustomerID(Long customerID) {
+        this.customerID = customerID;
     }
 
-    public String getCertificatetype() {
-        return certificatetype;
+    public String getCertificateType() {
+        return certificateType;
     }
 
-    public void setCertificatetype(String certificatetype) {
-        this.certificatetype = certificatetype == null ? null : certificatetype.trim();
+    public void setCertificateType(String certificateType) {
+        this.certificateType = certificateType == null ? null : certificateType.trim();
     }
 
-    public String getCertificatecode() {
-        return certificatecode;
+    public String getCertificateCode() {
+        return certificateCode;
     }
 
-    public void setCertificatecode(String certificatecode) {
-        this.certificatecode = certificatecode == null ? null : certificatecode.trim();
+    public void setCertificateCode(String certificateCode) {
+        this.certificateCode = certificateCode == null ? null : certificateCode.trim();
     }
 
-    public Date getCertificatevaliddate() {
-        return certificatevaliddate;
+    public Date getCertificateValidDate() {
+        return certificateValidDate;
     }
 
-    public void setCertificatevaliddate(Date certificatevaliddate) {
-        this.certificatevaliddate = certificatevaliddate;
+    public void setCertificateValidDate(Date certificateValidDate) {
+        this.certificateValidDate = certificateValidDate;
     }
 
-    public String getCretificationstatue() {
-        return cretificationstatue;
+    public String getCretificationStatue() {
+        return cretificationStatue;
     }
 
-    public void setCretificationstatue(String cretificationstatue) {
-        this.cretificationstatue = cretificationstatue == null ? null : cretificationstatue.trim();
+    public void setCretificationStatue(String cretificationStatue) {
+        this.cretificationStatue = cretificationStatue == null ? null : cretificationStatue.trim();
     }
 }

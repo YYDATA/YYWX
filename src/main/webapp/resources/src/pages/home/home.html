@@ -8,7 +8,7 @@
                 <div class="form-group row">
                     <label class="col-xs-4 control-label">借贷金额</label>
                     <div class="col-xs-8">
-						<select ng-model="params.loanamount" class="form-control" ng-init="params.loanamount='1'">
+						<select ng-model="params.loanAmount" class="form-control" ng-init="params.loanAmount='1'">
 							<option value="1">1万</option>
 							<option value="2">2万</option>
 							<option value="3">3万</option>
@@ -20,7 +20,7 @@
                 <div class="form-group row">
                     <label class="col-xs-4 control-label">借贷期限</label>
                     <div class="col-xs-8">
-                        <select ng-model="params.loanterm" ng-init="params.loanterm='1'" class="form-control">
+                        <select ng-model="params.loanTerm" ng-init="params.loanTerm='1'" class="form-control">
                             <option value="1">1年</option>
                             <option value="2">2年</option>
                             <option value="3">3年</option>
@@ -31,7 +31,7 @@
                 </div>
                 <div ng-class="{'has-error':homeForm.phone.$invalid && !homeForm.phone.$pristine}" class="form-group row">
                     <div class="col-xs-12">
-                        <input ng-model="params.cellphone" name="phone" class="form-control" type="text" placeholder="请输入您的手机号" required ng-pattern="/^1[345678]\d{9}$/">
+                        <input ng-model="params.cellPhone" name="phone" class="form-control" type="text" placeholder="请输入您的手机号" required ng-pattern="/^1[345678]\d{9}$/">
                         <div ng-messages="homeForm.phone.$error" ng-show="!homeForm.phone.$pristine">
 							<div ng-message="required" class="help-block">必填项不能为空</div>
 							<div ng-message="pattern" class="help-block">请输入正确的手机号</div>

@@ -36,12 +36,12 @@ public class CustomerService {
 	public void saveOrUpCustomer(HttpServletRequest request,Customer customer){
 		Customer c=(Customer)request.getSession().getAttribute("customer");
 		if(c!=null)
-			customer.setCustomerid(c.getCustomerid());
-		if(customer!=null&&customer.getCustomerid()!=null){
-			customer.setLastlogintime(new Date());
+			customer.setCustomerID(c.getCustomerID());
+		if(customer!=null&&customer.getCustomerID()!=null){
+			customer.setLastLoginTime(new Date());
 			customerDao.updateByPrimaryKeySelective(customer);
 		}else{
-			customer.setCreatetime(new Date());
+			customer.setCreateTime(new Date());
 			customerDao.insertSelective(customer);
 		}
 		saveOrUpCustomerCertificate(request,customer);
@@ -59,12 +59,12 @@ public class CustomerService {
 	}
 	private void saveOrUpCustomerCertificate(HttpServletRequest request,Customer customer){
 		CustomerCertificate customerCertificate=null;
-		if(StringUtils.isNoneBlank(request.getParameter("idcard"))){
-			customerCertificate=new CustomerCertificate(customer.getCustomerid(),"ID",request.getParameter("idcard"));
+		if(StringUtils.isNoneBlank(request.getParameter("idCard"))){
+			customerCertificate=new CustomerCertificate(customer.getCustomerID(),"ID",request.getParameter("idCard"));
 			customerCertificateService.saveOrUpCustomerCertificate(customerCertificate);
 		}
-		if(StringUtils.isNoneBlank(request.getParameter("idcard"))){
-			customerCertificate=new CustomerCertificate(customer.getCustomerid(),"QQ",request.getParameter("qq"));
+		if(StringUtils.isNoneBlank(request.getParameter("qq"))){
+			customerCertificate=new CustomerCertificate(customer.getCustomerID(),"QQ",request.getParameter("qq"));
 			customerCertificateService.saveOrUpCustomerCertificate(customerCertificate);
 		}
 	}

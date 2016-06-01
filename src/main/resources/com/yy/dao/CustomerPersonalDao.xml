@@ -2,36 +2,36 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yy.dao.CustomerPersonalDao" >
   <resultMap id="BaseResultMap" type="com.yy.domain.entity.CustomerPersonal" >
-    <result column="CustomerID" property="customerid" jdbcType="BIGINT" />
+    <result column="CustomerID" property="customerID" jdbcType="BIGINT" />
     <result column="Sex" property="sex" jdbcType="CHAR" />
     <result column="Birthdate" property="birthdate" jdbcType="DATE" />
     <result column="National" property="national" jdbcType="VARCHAR" />
-    <result column="MarriageType" property="marriagetype" jdbcType="VARCHAR" />
-    <result column="PoliticsStatus" property="politicsstatus" jdbcType="VARCHAR" />
-    <result column="DwellingCondition" property="dwellingcondition" jdbcType="VARCHAR" />
-    <result column="ResidentialAddress" property="residentialaddress" jdbcType="VARCHAR" />
-    <result column="ResidentialPostCode" property="residentialpostcode" jdbcType="CHAR" />
-    <result column="HukouAddress" property="hukouaddress" jdbcType="VARCHAR" />
+    <result column="MarriageType" property="marriageType" jdbcType="VARCHAR" />
+    <result column="PoliticsStatus" property="politicsStatus" jdbcType="VARCHAR" />
+    <result column="DwellingCondition" property="dwellingCondition" jdbcType="VARCHAR" />
+    <result column="ResidentialAddress" property="residentialAddress" jdbcType="VARCHAR" />
+    <result column="ResidentialPostCode" property="residentialPostCode" jdbcType="CHAR" />
+    <result column="HukouAddress" property="hukouAddress" jdbcType="VARCHAR" />
     <result column="Teacher" property="teacher" jdbcType="VARCHAR" />
-    <result column="HighestDegree" property="highestdegree" jdbcType="VARCHAR" />
-    <result column="WorkingLife" property="workinglife" jdbcType="VARCHAR" />
+    <result column="HighestDegree" property="highestDegree" jdbcType="VARCHAR" />
+    <result column="WorkingLife" property="workingLife" jdbcType="VARCHAR" />
   </resultMap>
   <insert id="insert" parameterType="com.yy.domain.entity.CustomerPersonal" >
-    insert into m_customer_personal (CustomerID, Sex, Birthdate,
-      National, MarriageType, PoliticsStatus,
-      DwellingCondition, ResidentialAddress,
-      ResidentialPostCode, HukouAddress, Teacher,
+    insert into m_customer_personal (CustomerID, Sex, Birthdate, 
+      National, MarriageType, PoliticsStatus, 
+      DwellingCondition, ResidentialAddress, 
+      ResidentialPostCode, HukouAddress, Teacher, 
       HighestDegree, WorkingLife)
-    values (#{customerid,jdbcType=BIGINT}, #{sex,jdbcType=CHAR}, #{birthdate,jdbcType=DATE},
-      #{national,jdbcType=VARCHAR}, #{marriagetype,jdbcType=VARCHAR}, #{politicsstatus,jdbcType=VARCHAR},
-      #{dwellingcondition,jdbcType=VARCHAR}, #{residentialaddress,jdbcType=VARCHAR},
-      #{residentialpostcode,jdbcType=CHAR}, #{hukouaddress,jdbcType=VARCHAR}, #{teacher,jdbcType=VARCHAR},
-      #{highestdegree,jdbcType=VARCHAR}, #{workinglife,jdbcType=VARCHAR})
+    values (#{customerID,jdbcType=BIGINT}, #{sex,jdbcType=CHAR}, #{birthdate,jdbcType=DATE}, 
+      #{national,jdbcType=VARCHAR}, #{marriageType,jdbcType=VARCHAR}, #{politicsStatus,jdbcType=VARCHAR}, 
+      #{dwellingCondition,jdbcType=VARCHAR}, #{residentialAddress,jdbcType=VARCHAR}, 
+      #{residentialPostCode,jdbcType=CHAR}, #{hukouAddress,jdbcType=VARCHAR}, #{teacher,jdbcType=VARCHAR}, 
+      #{highestDegree,jdbcType=VARCHAR}, #{workingLife,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yy.domain.entity.CustomerPersonal" >
     insert into m_customer_personal
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="customerid != null" >
+      <if test="customerID != null" >
         CustomerID,
       </if>
       <if test="sex != null" >
@@ -43,37 +43,37 @@
       <if test="national != null" >
         National,
       </if>
-      <if test="marriagetype != null" >
+      <if test="marriageType != null" >
         MarriageType,
       </if>
-      <if test="politicsstatus != null" >
+      <if test="politicsStatus != null" >
         PoliticsStatus,
       </if>
-      <if test="dwellingcondition != null" >
+      <if test="dwellingCondition != null" >
         DwellingCondition,
       </if>
-      <if test="residentialaddress != null" >
+      <if test="residentialAddress != null" >
         ResidentialAddress,
       </if>
-      <if test="residentialpostcode != null" >
+      <if test="residentialPostCode != null" >
         ResidentialPostCode,
       </if>
-      <if test="hukouaddress != null" >
+      <if test="hukouAddress != null" >
         HukouAddress,
       </if>
       <if test="teacher != null" >
         Teacher,
       </if>
-      <if test="highestdegree != null" >
+      <if test="highestDegree != null" >
         HighestDegree,
       </if>
-      <if test="workinglife != null" >
+      <if test="workingLife != null" >
         WorkingLife,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="customerid != null" >
-        #{customerid,jdbcType=BIGINT},
+      <if test="customerID != null" >
+        #{customerID,jdbcType=BIGINT},
       </if>
       <if test="sex != null" >
         #{sex,jdbcType=CHAR},
@@ -84,32 +84,32 @@
       <if test="national != null" >
         #{national,jdbcType=VARCHAR},
       </if>
-      <if test="marriagetype != null" >
-        #{marriagetype,jdbcType=VARCHAR},
+      <if test="marriageType != null" >
+        #{marriageType,jdbcType=VARCHAR},
       </if>
-      <if test="politicsstatus != null" >
-        #{politicsstatus,jdbcType=VARCHAR},
+      <if test="politicsStatus != null" >
+        #{politicsStatus,jdbcType=VARCHAR},
       </if>
-      <if test="dwellingcondition != null" >
-        #{dwellingcondition,jdbcType=VARCHAR},
+      <if test="dwellingCondition != null" >
+        #{dwellingCondition,jdbcType=VARCHAR},
       </if>
-      <if test="residentialaddress != null" >
-        #{residentialaddress,jdbcType=VARCHAR},
+      <if test="residentialAddress != null" >
+        #{residentialAddress,jdbcType=VARCHAR},
       </if>
-      <if test="residentialpostcode != null" >
-        #{residentialpostcode,jdbcType=CHAR},
+      <if test="residentialPostCode != null" >
+        #{residentialPostCode,jdbcType=CHAR},
       </if>
-      <if test="hukouaddress != null" >
-        #{hukouaddress,jdbcType=VARCHAR},
+      <if test="hukouAddress != null" >
+        #{hukouAddress,jdbcType=VARCHAR},
       </if>
       <if test="teacher != null" >
         #{teacher,jdbcType=VARCHAR},
       </if>
-      <if test="highestdegree != null" >
-        #{highestdegree,jdbcType=VARCHAR},
+      <if test="highestDegree != null" >
+        #{highestDegree,jdbcType=VARCHAR},
       </if>
-      <if test="workinglife != null" >
-        #{workinglife,jdbcType=VARCHAR},
+      <if test="workingLife != null" >
+        #{workingLife,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>

@@ -3,7 +3,7 @@ package com.yy.domain.entity;
 import java.util.Date;
 
 public class CustomerPersonal {
-    private Long customerid;
+    private Long customerID;
 
     private String sex;
 
@@ -11,30 +11,30 @@ public class CustomerPersonal {
 
     private String national;
 
-    private String marriagetype;
+    private String marriageType;
 
-    private String politicsstatus;
+    private String politicsStatus;
 
-    private String dwellingcondition;
+    private String dwellingCondition;
 
-    private String residentialaddress;
+    private String residentialAddress;
 
-    private String residentialpostcode;
+    private String residentialPostCode;
 
-    private String hukouaddress;
+    private String hukouAddress;
 
     private String teacher;
 
-    private String highestdegree;
+    private String highestDegree;
 
-    private String workinglife;
+    private String workingLife;
 
-    public Long getCustomerid() {
-        return customerid;
+    public Long getCustomerID() {
+        return customerID;
     }
 
-    public void setCustomerid(Long customerid) {
-        this.customerid = customerid;
+    public void setCustomerID(Long customerID) {
+        this.customerID = customerID;
     }
 
     public String getSex() {
@@ -61,52 +61,52 @@ public class CustomerPersonal {
         this.national = national == null ? null : national.trim();
     }
 
-    public String getMarriagetype() {
-        return marriagetype;
+    public String getMarriageType() {
+        return marriageType;
     }
 
-    public void setMarriagetype(String marriagetype) {
-        this.marriagetype = marriagetype == null ? null : marriagetype.trim();
+    public void setMarriageType(String marriageType) {
+        this.marriageType = marriageType == null ? null : marriageType.trim();
     }
 
-    public String getPoliticsstatus() {
-        return politicsstatus;
+    public String getPoliticsStatus() {
+        return politicsStatus;
     }
 
-    public void setPoliticsstatus(String politicsstatus) {
-        this.politicsstatus = politicsstatus == null ? null : politicsstatus.trim();
+    public void setPoliticsStatus(String politicsStatus) {
+        this.politicsStatus = politicsStatus == null ? null : politicsStatus.trim();
     }
 
-    public String getDwellingcondition() {
-        return dwellingcondition;
+    public String getDwellingCondition() {
+        return dwellingCondition;
     }
 
-    public void setDwellingcondition(String dwellingcondition) {
-        this.dwellingcondition = dwellingcondition == null ? null : dwellingcondition.trim();
+    public void setDwellingCondition(String dwellingCondition) {
+        this.dwellingCondition = dwellingCondition == null ? null : dwellingCondition.trim();
     }
 
-    public String getResidentialaddress() {
-        return residentialaddress;
+    public String getResidentialAddress() {
+        return residentialAddress;
     }
 
-    public void setResidentialaddress(String residentialaddress) {
-        this.residentialaddress = residentialaddress == null ? null : residentialaddress.trim();
+    public void setResidentialAddress(String residentialAddress) {
+        this.residentialAddress = residentialAddress == null ? null : residentialAddress.trim();
     }
 
-    public String getResidentialpostcode() {
-        return residentialpostcode;
+    public String getResidentialPostCode() {
+        return residentialPostCode;
     }
 
-    public void setResidentialpostcode(String residentialpostcode) {
-        this.residentialpostcode = residentialpostcode == null ? null : residentialpostcode.trim();
+    public void setResidentialPostCode(String residentialPostCode) {
+        this.residentialPostCode = residentialPostCode == null ? null : residentialPostCode.trim();
     }
 
-    public String getHukouaddress() {
-        return hukouaddress;
+    public String getHukouAddress() {
+        return hukouAddress;
     }
 
-    public void setHukouaddress(String hukouaddress) {
-        this.hukouaddress = hukouaddress == null ? null : hukouaddress.trim();
+    public void setHukouAddress(String hukouAddress) {
+        this.hukouAddress = hukouAddress == null ? null : hukouAddress.trim();
     }
 
     public String getTeacher() {
@@ -117,19 +117,19 @@ public class CustomerPersonal {
         this.teacher = teacher == null ? null : teacher.trim();
     }
 
-    public String getHighestdegree() {
-        return highestdegree;
+    public String getHighestDegree() {
+        return highestDegree;
     }
 
-    public void setHighestdegree(String highestdegree) {
-        this.highestdegree = highestdegree == null ? null : highestdegree.trim();
+    public void setHighestDegree(String highestDegree) {
+        this.highestDegree = highestDegree == null ? null : highestDegree.trim();
     }
 
-    public String getWorkinglife() {
-        return workinglife;
+    public String getWorkingLife() {
+        return workingLife;
     }
 
-    public void setWorkinglife(String workinglife) {
-        this.workinglife = workinglife == null ? null : workinglife.trim();
+    public void setWorkingLife(String workingLife) {
+        this.workingLife = workingLife == null ? null : workingLife.trim();
     }
 }

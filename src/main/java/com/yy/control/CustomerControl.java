@@ -28,8 +28,6 @@ import com.yy.web.utils.JsonViewFactory;
 public class CustomerControl {
 	@Autowired
 	CustomerService customerService;
-//	@Autowired
-//	CustomerLoanService customerLoanService;
 	@Autowired
 	LoanOrderService loanOrderService;
 	@Autowired

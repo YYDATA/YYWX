@@ -29,7 +29,7 @@ public class SmsControl {
 	 * @param @return    设定文件 
 	 * @return ModelAndView    返回类型 
 	 */
-	@RequestMapping(value="sendVerificationCode",method=RequestMethod.GET)
+	@RequestMapping(value="sendVerificationCode",method=RequestMethod.POST)
 	public ModelAndView sendVerificationCode(HttpServletRequest request,SmsDetail smsDetail){
 		Assert.notNull(smsDetail.getPhone(), "手机号不能为空");
 //		smsDetail = new SmsDetail();

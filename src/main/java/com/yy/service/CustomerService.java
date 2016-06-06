@@ -71,7 +71,7 @@ public class CustomerService {
 		saveOrUpCustomer(request,customer);
 		saveOrUpCustomerCertificate(request,customer);
 		//执行信息收集
-		collect_info(request,customer);
+//		collect_info(request,customer);
 	}
 	/**
 	 *

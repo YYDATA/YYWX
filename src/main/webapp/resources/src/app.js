@@ -45,7 +45,11 @@ define(function(require) {
                 url: '/registed',
                 templateUrl: require.toUrl('./pages/registed/registed.html'),
                 controller: 'registedControl'
-            })
+            }).state('certificate',{
+				url:'/certificate',
+				templateUrl:require.toUrl('./pages/article/certificate.html')
+			})
+
         }
     ]);
 
@@ -122,7 +126,8 @@ define(function(require) {
                 $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
                     var animateObj = {
                         home: {
-                            register: 'slideInRight slideOutLeft'
+                            register: 'slideInRight slideOutLeft',
+                            certificate: 'slideInRight slideOutLeft'
                         },
                         register: {
                             home: 'slideInLeft slideOutRight',
@@ -134,6 +139,9 @@ define(function(require) {
                         },
                         registed: {
                             registerInfo: 'slideInLeft slideOutRight'
+                        },
+                        certificate: {
+                            home: 'slideInLeft slideOutRight'
                         }
                     };
                     var animateClass = animateObj[fromState.name] || '';

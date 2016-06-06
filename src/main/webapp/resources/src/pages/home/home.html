@@ -31,7 +31,7 @@
                 </div>
                 <div ng-class="{'has-error':homeForm.phone.$invalid && !homeForm.phone.$pristine}" class="form-group row">
                     <div class="col-xs-12">
-                        <input ng-model="params.cellPhone" name="phone" class="form-control" type="text" placeholder="请输入您的手机号" required ng-pattern="/^1[345678]\d{9}$/">
+                        <input ng-model="params.phone" name="phone" class="form-control" type="text" placeholder="请输入您的手机号" required ng-pattern="/^1[345678]\d{9}$/">
                         <div ng-messages="homeForm.phone.$error" ng-show="!homeForm.phone.$pristine">
                             <div ng-message="required" class="help-block">必填项不能为空</div>
                             <div ng-message="pattern" class="help-block">请输入正确的手机号</div>

@@ -32,7 +32,6 @@ public class SmsControl {
 	@RequestMapping(value="sendVerificationCode",method=RequestMethod.POST)
 	public ModelAndView sendVerificationCode(HttpServletRequest request,SmsDetail smsDetail){
 		Assert.notNull(request.getParameter("cellPhone"), "手机号不能为空");
-//		smsDetail = new SmsDetail();
 		smsDetail.setPhone(request.getParameter("cellPhone"));
 		smsService.sendSms(request, smsDetail);
 		return JsonViewFactory.buildJsonView(new ResponseResult<>(true, "发送成功！", null));

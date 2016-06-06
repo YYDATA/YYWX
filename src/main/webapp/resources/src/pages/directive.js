@@ -45,11 +45,13 @@ define(function(require) {
         app.directive('doValidate', function() {
             return {
                 restrict: 'A',
+                //				scope:true,
                 require: '^?form',
                 link: function($scope, element, attrs, formCtrl) {
                     var hm = new Hammer(element[0]);
                     hm.on('tap', function() {
                         var isApply = false;
+                        $scope.isDisabled = false;
                         var name = attrs.doValidate;
                         if (name && formCtrl[name]) {
                             if (formCtrl[name].$invalid) {
@@ -68,6 +70,53 @@ define(function(require) {
                 }
             }
         })
+        app.directive('checkVerifyCode', ['cache', function(cache) {
+            var num = 60;
+            cache.set('timer', num);
+            return {
+                restrict: 'A',
+                scope: true,
+                require: '^?form',
+                link: function($scope, element, attrs, formControl) {
+                    var text = element.html();
+                    var timer = cache.get('timer');
+                    if (timer !== num) {
+                        fn();
+                    }
+                    var hm = new Hammer(element[0]);
+
+                    function fn() {
+                        element.html(timer + '秒');
+                        var clock = setInterval(function() {
+                            timer--;
+                            if (timer < 0) {
+                                timer = num;
+                                cache.set('timer', timer);
+                                element.html(text);
+                                clearInterval(clock);
+                                clock = null;
+                                return;
+                            }
+                            element.html(timer + '秒');
+                            cache.set('timer', timer);
+                        }, 1000)
+                    }
+                    hm.on('tap', function() {
+                        if (timer !== num) return;
+                        var name = attrs.doValidate;
+                        if (name && formControl[name]) {
+                            if (!formControl[name].$invalid) {
+                                $scope.$apply(attrs.checkVerifyCode);
+                                fn();
+                            }
+                        } else {
+                            $scope.$apply(attrs.checkVerifyCode);
+                            fn();
+                        }
+                    })
+                }
+            }
+        }])
         app.directive("repeatKey", function() {
             return {
                 require: "ngModel",

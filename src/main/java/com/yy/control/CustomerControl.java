@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -47,7 +48,9 @@ public class CustomerControl {
 	 */
 	@RequestMapping(value = "/saveCustomerLoan", method = RequestMethod.POST)
 	public ModelAndView saveCustomerLoan(HttpServletRequest request, LoanOrder loanOrder){
-		loanOrderService.saveOrUpLoadOrder(request, loanOrder);
+		Assert.notNull(loanOrder.getCellPhone(), "手机号不能为空");
+		Assert.notNull(request.getParameter("code"), "验证码不能为空");
+		loanOrderService.saveCustomerLoan(request, loanOrder);
 		return JsonViewFactory.buildJsonView(new ResponseResult<>(true, "操作成功！", null));
 	}
 	/**
@@ -60,6 +63,9 @@ public class CustomerControl {
 	 */
 	@RequestMapping(value = "/saveOrUpdateCustomer", method = RequestMethod.POST)
 	public ModelAndView doSupplementCustomer(HttpServletRequest request, Customer customer){
+		Assert.notNull(customer.getName(), "借款人新姓名不能为空");
+		Assert.notNull(request.getParameter("idCard"), "借款人身份证号不能为空");
+		
 		customerService.doSupplementCustomer(request,customer);
 		return JsonViewFactory.buildJsonView(new ResponseResult<>(true, "操作成功！", null));
 	}
@@ -76,16 +82,18 @@ public class CustomerControl {
 		customerPersonalService.saveOrUpCustomerPersonal(request,customerPersonal);
 		return JsonViewFactory.buildJsonView(new ResponseResult<>(true, "操作成功！", null));
 	}
+	/**
+	 * @Title: collect_info 
+	 * @Description: 采集信息
+	 * @author caiZhen
+	 * @date 2016年6月6日 上午11:28:29
+	 * @param @param request
+	 * @param @return    设定文件 
+	 * @return ModelAndView    返回类型 
+	 */
 	@RequestMapping(value="collect_info",method=RequestMethod.GET)
 	public ModelAndView collect_info(HttpServletRequest request){
 		customerService.collect_info(request,null);
-		return JsonViewFactory.buildJsonView(new ResponseResult<>(true, "操作成功！", null));
-	}
-	@RequestMapping(value="sendSms",method=RequestMethod.GET)
-	public ModelAndView sendSms(HttpServletRequest request,SmsDetail smsDetail){
-		smsDetail = new SmsDetail();
-		smsDetail.setPhone("17767173344");
-		smsService.sendSms(request, smsDetail);
 		return JsonViewFactory.buildJsonView(new ResponseResult<>(true, "操作成功！", null));
 	}
 }

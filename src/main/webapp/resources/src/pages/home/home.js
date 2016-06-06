@@ -27,7 +27,9 @@ define(function(require) {
                             cellPhone: $scope.params.cellPhone
                         }
                     }).success(function(data) {
-                        alert(data.msg);
+                    	if(!data.success){
+                    		alert(data.msg);
+                    	}
                     })
                 }
             }

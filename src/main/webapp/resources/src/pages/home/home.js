@@ -24,7 +24,7 @@ define(function(require) {
                         url: baseUrl + 'sms/sendVerificationCode',
                         method: 'post',
                         data: {
-                            phone: $scope.params.phone
+                            cellPhone: $scope.params.cellPhone
                         }
                     }).success(function(data) {
                         alert(data.msg);

@@ -12,7 +12,6 @@
     <result column="ResidentialAddress" property="residentialAddress" jdbcType="VARCHAR" />
     <result column="ResidentialPostCode" property="residentialPostCode" jdbcType="CHAR" />
     <result column="HukouAddress" property="hukouAddress" jdbcType="VARCHAR" />
-    <result column="Teacher" property="teacher" jdbcType="VARCHAR" />
     <result column="HighestDegree" property="highestDegree" jdbcType="VARCHAR" />
     <result column="WorkingLife" property="workingLife" jdbcType="VARCHAR" />
   </resultMap>
@@ -20,12 +19,12 @@
     insert into m_customer_personal (CustomerID, Sex, Birthdate, 
       National, MarriageType, PoliticsStatus, 
       DwellingCondition, ResidentialAddress, 
-      ResidentialPostCode, HukouAddress, Teacher, 
+      ResidentialPostCode, HukouAddress, 
       HighestDegree, WorkingLife)
     values (#{customerID,jdbcType=BIGINT}, #{sex,jdbcType=CHAR}, #{birthdate,jdbcType=DATE}, 
       #{national,jdbcType=VARCHAR}, #{marriageType,jdbcType=VARCHAR}, #{politicsStatus,jdbcType=VARCHAR}, 
       #{dwellingCondition,jdbcType=VARCHAR}, #{residentialAddress,jdbcType=VARCHAR}, 
-      #{residentialPostCode,jdbcType=CHAR}, #{hukouAddress,jdbcType=VARCHAR}, #{teacher,jdbcType=VARCHAR}, 
+      #{residentialPostCode,jdbcType=CHAR}, #{hukouAddress,jdbcType=VARCHAR}, 
       #{highestDegree,jdbcType=VARCHAR}, #{workingLife,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yy.domain.entity.CustomerPersonal" >
@@ -60,9 +59,6 @@
       </if>
       <if test="hukouAddress != null" >
         HukouAddress,
-      </if>
-      <if test="teacher != null" >
-        Teacher,
       </if>
       <if test="highestDegree != null" >
         HighestDegree,
@@ -101,9 +97,6 @@
       </if>
       <if test="hukouAddress != null" >
         #{hukouAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="teacher != null" >
-        #{teacher,jdbcType=VARCHAR},
       </if>
       <if test="highestDegree != null" >
         #{highestDegree,jdbcType=VARCHAR},

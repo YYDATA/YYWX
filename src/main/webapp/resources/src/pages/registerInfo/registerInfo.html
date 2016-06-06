@@ -1,26 +1,56 @@
 <div iscroll class="page-content not-header not-footer">
     <div>
         <div class="text-center register-hd">
-            <img style="width:266px;" src="../../resources/images/img05.jpg" alt="">
+            <img style="width:266px;" src="./resources/images/img05.jpg" alt="">
         </div>
         <div class="container-fluid">
             <form novalidate form-validated="submit()" name="registerForm" class="form-horizontal register-form">
-                <div class="form-group" ng-class="{'has-error':registerForm.teacher.$invalid && !registerForm.teacher.$pristine}">
+                
+                <div class="form-group" ng-class="{'has-error':registerForm.companyType.$invalid && !registerForm.companyType.$pristine}">
                     <label class="control-label col-xs-2">
-                        <img src="../../resources/images/ioc08.png" alt="">
+                        <img src="./resources/images/ioc09.png">
                     </label>
                     <div class="col-xs-10">
                         <div class="row">
-                            <input type="text" ng-model="params.teacher" name="teacher" class="form-control" required placeholder="请输入老师的姓名">
-                            <div ng-messages="registerForm.teacher.$error" ng-show="!registerForm.teacher.$pristine">
-                                <div ng-message="required" class="help-block">必填项不能为空</div>
+                            <select ng-model="params.companyType" name="companyType" class="form-control" required>
+                                <option value="">请选择公司类型</option>
+                                <option value="H">政府事业单位</option>
+                                <option value="M">国营企业</option>
+                                <option value="S">民营企业</option>
+                                <option value="O">其他</option>
+                                <option value="N">无职业</option>
+                            </select>
+                            <div ng-messages="registerForm.companyType.$error" ng-show="!registerForm.companyType.$pristine">
+                                <div ng-message="required" class="help-block">请选择公司类型</div>
                             </div>
                         </div>
                     </div>
                 </div>
+                
+                <div class="form-group" ng-class="{'has-error':registerForm.role.$invalid && !registerForm.role.$pristine}">
+                    <label class="control-label col-xs-2">
+                        <img src="./resources/images/ioc09.png">
+                    </label>
+                    <div class="col-xs-10">
+                        <div class="row">
+                            <select ng-model="params.role" name="role" class="form-control" required>
+                                <option value="">请选择职务</option>
+                                <option value="H">高管</option>
+                                <option value="M">经理</option>
+                                <option value="E">员工</option>
+                                <option value="O">未知</option>
+                            </select>
+                            <div ng-messages="registerForm.role.$error" ng-show="!registerForm.role.$pristine">
+                                <div ng-message="required" class="help-block">请选择学历</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
                 <div class="form-group" ng-class="{'has-error':registerForm.highestDegree.$invalid && !registerForm.highestDegree.$pristine}">
                     <label class="control-label col-xs-2">
-                        <img src="../../resources/images/ioc09.png">
+                        <img src="./resources/images/ioc09.png">
                     </label>
                     <div class="col-xs-10">
                         <div class="row">
@@ -40,7 +70,7 @@
                 </div>
                 <div class="form-group" ng-class="{'has-error':registerForm.workingLife.$invalid && !registerForm.workingLife.$pristine}">
                     <label class="control-label col-xs-2">
-                        <img src="../../resources/images/ioc10.png" alt="">
+                        <img src="./resources/images/ioc10.png" alt="">
                     </label>
                     <div class="col-xs-10">
                         <div class="row">
@@ -57,7 +87,7 @@
                 </div>
                 <div class="form-group" ng-class="{'has-error':registerForm.marriageType.$invalid && !registerForm.marriageType.$pristine}">
                     <label class="control-label col-xs-2">
-                        <img src="../../resources/images/ioc11.png" alt="">
+                        <img src="./resources/images/ioc11.png" alt="">
                     </label>
                     <div class="col-xs-10">
                         <div class="row">
@@ -78,7 +108,7 @@
             </form>
         </div>
         <div class="text-center text-muted">
-            <p><img style="width:10px;" src="../../resources/images/ioc03.png" alt=""> 全程银行级加密，全面保障您的信息安全</p>
+            <p><img style="width:10px;" src="./resources/images/ioc03.png" alt=""> 全程银行级加密，全面保障您的信息安全</p>
         </div>
     </div>
 </div>

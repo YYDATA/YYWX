@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yy.common.utils.Common;
 import com.yy.dao.LoanOrderDao;
 import com.yy.domain.entity.Customer;
 import com.yy.domain.entity.LoanOrder;
+import com.yy.web.utils.StringUtil;
 
 @Service
 public class LoanOrderService {
@@ -32,8 +32,8 @@ public class LoanOrderService {
 			customerService.saveOrUpCustomer(request,customer);
 			loanOrder.setCustomerID(customer.getCustomerID());
 		}
-		if(customer!=null)
-			request.getSession().setAttribute("customer", customer);
+//		if(customer!=null)
+//			request.getSession().setAttribute("customer", customer);
 		loanOrder.setOrderDate(new Date());
 		loanOrder.setLoanOrderCode(getLoanOrderCode());
 		loanOrderDao.insert(loanOrder);
@@ -42,6 +42,6 @@ public class LoanOrderService {
 	 * @return BA+年月日+6位流水号
 	 */
 	private String getLoanOrderCode(){
-		return new StringBuilder("BA"+Common.getFormatDate(new Date(), "yyyyMMdd")+Common.randomCode(6)).toString();
+		return new StringBuilder("BA"+StringUtil.getFormatDate(new Date(), "yyyyMMdd")+StringUtil.randomCode(6)).toString();
 	}
 }

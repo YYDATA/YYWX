@@ -4,22 +4,49 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * 字符串工具类
  *
- * @author lujf
- *
  */
 public class StringUtil {
-
+	
+	/**
+	* @Title: setSession 
+	* @Description: 将值放入session中
+	* @param @param request
+	* @param @param o
+	* @param @param sign    设定文件 
+	* @return void    返回类型 
+	* @throws
+	 */
+	public static void setSession(HttpServletRequest request,Object o,String sign){
+		if(o==null)
+			return;
+		request.getSession().setAttribute(sign, null);//设置为空
+		request.getSession().setAttribute(sign, o);
+	}
+	/**
+	* @Title: getSession 
+	* @Description: 根据标志获取sesion中的值
+	* @param @param request
+	* @param @param sign
+	* @param @return    设定文件 
+	* @return Object    返回类型 
+	 */
+	public static Object getSession(HttpServletRequest request,String sign){
+		return request.getSession().getAttribute(sign);
+	}
 
 	private static String[][] FilterChars = { { "%", "/%" },
 		{ "/", "//;" }, {"'","''"},{"\\","\\/"}};
@@ -271,7 +298,32 @@ public class StringUtil {
 	public static String trimNull(String str) {
 		return trimNull(str, "");
 	}
-
-
+	/**
+	 * @Title: randomCode
+	 * @Description: 根据length生成n为随机数
+	 * @author caizhen
+	 * @param @param length
+	 * @param @return    设定文件
+	 * @return String    返回类型
+	 */
+    public static String randomCode(int length){
+    	StringBuffer sb=new StringBuffer();
+    	String chars="0123456789";
+    	for(int i=0;i<length;i++){
+    		int rand=(int)(Math.random()*10);
+    		sb.append(chars.charAt(rand));
+    	}
+    	return sb.toString();
+    }
+    /**
+     * 根据日期、格式格式化日期
+     * @param date
+     * @param formatStr
+     * @return
+     */
+    public static String getFormatDate(Date date,String formatStr){
+    	SimpleDateFormat s=new SimpleDateFormat(formatStr);
+    	return s.format(date);
+    }
 
 }

@@ -23,4 +23,8 @@ public class UrlControl {
 	public String index(HttpServletRequest request) throws Exception{
 		return "/index";
 	}
+	@RequestMapping(value = "/login")
+	public String login(HttpServletRequest request) throws Exception{
+		return "/login";
+	}
 }

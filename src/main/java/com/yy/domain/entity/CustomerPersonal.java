@@ -23,8 +23,6 @@ public class CustomerPersonal {
 
     private String hukouAddress;
 
-    private String teacher;
-
     private String highestDegree;
 
     private String workingLife;
@@ -107,14 +105,6 @@ public class CustomerPersonal {
 
     public void setHukouAddress(String hukouAddress) {
         this.hukouAddress = hukouAddress == null ? null : hukouAddress.trim();
-    }
-
-    public String getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(String teacher) {
-        this.teacher = teacher == null ? null : teacher.trim();
     }
 
     public String getHighestDegree() {

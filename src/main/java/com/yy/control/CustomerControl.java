@@ -12,9 +12,11 @@ import com.yy.common.domain.ResponseResult;
 import com.yy.domain.entity.Customer;
 import com.yy.domain.entity.CustomerPersonal;
 import com.yy.domain.entity.LoanOrder;
+import com.yy.domain.entity.SmsDetail;
 import com.yy.service.CustomerPersonalService;
 import com.yy.service.CustomerService;
 import com.yy.service.LoanOrderService;
+import com.yy.service.SmsService;
 import com.yy.web.utils.JsonViewFactory;
 
 /**
@@ -32,6 +34,8 @@ public class CustomerControl {
 	LoanOrderService loanOrderService;
 	@Autowired
 	CustomerPersonalService customerPersonalService;
+	@Autowired
+	SmsService smsService;
 
 	/**
 	 * @Title: saveCustomerLoan
@@ -55,8 +59,8 @@ public class CustomerControl {
 	 * @return ModelAndView
 	 */
 	@RequestMapping(value = "/saveOrUpdateCustomer", method = RequestMethod.POST)
-	public ModelAndView saveOrUpdateCustomer(HttpServletRequest request, Customer customer){
-		customerService.saveOrUpCustomer(request,customer);
+	public ModelAndView doSupplementCustomer(HttpServletRequest request, Customer customer){
+		customerService.doSupplementCustomer(request,customer);
 		return JsonViewFactory.buildJsonView(new ResponseResult<>(true, "操作成功！", null));
 	}
 	/**
@@ -70,6 +74,18 @@ public class CustomerControl {
 	@RequestMapping(value = "/saveOrUpdateCustomerPersonal", method = RequestMethod.POST)
 	public ModelAndView saveOrUpCustomerPersonal(HttpServletRequest request, CustomerPersonal customerPersonal){
 		customerPersonalService.saveOrUpCustomerPersonal(request,customerPersonal);
+		return JsonViewFactory.buildJsonView(new ResponseResult<>(true, "操作成功！", null));
+	}
+	@RequestMapping(value="collect_info",method=RequestMethod.GET)
+	public ModelAndView collect_info(HttpServletRequest request){
+		customerService.collect_info(request,null);
+		return JsonViewFactory.buildJsonView(new ResponseResult<>(true, "操作成功！", null));
+	}
+	@RequestMapping(value="sendSms",method=RequestMethod.GET)
+	public ModelAndView sendSms(HttpServletRequest request,SmsDetail smsDetail){
+		smsDetail = new SmsDetail();
+		smsDetail.setPhone("17767173344");
+		smsService.sendSms(request, smsDetail);
 		return JsonViewFactory.buildJsonView(new ResponseResult<>(true, "操作成功！", null));
 	}
 }

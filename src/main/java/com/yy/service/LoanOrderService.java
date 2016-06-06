@@ -61,6 +61,7 @@ public class LoanOrderService {
 		if(listCustomer.size()>0){
 			loanOrder.setCustomerID(listCustomer.get(0).getCustomerID());
 			customer=listCustomer.get(0);
+			StringUtil.setSession(request, customer, "customer");
 		}else{
 			customerService.saveOrUpCustomer(request,customer);
 			loanOrder.setCustomerID(customer.getCustomerID());

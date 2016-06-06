@@ -47,9 +47,6 @@ public class SmsService {
 		String code=StringUtil.randomCode(6);
 		smsDetail.setContent("【品信金融】 您的验证码是"+code);
 		
-		StringUtil.setSession(request, code, "verificationCode");
-		StringUtil.setSession(request, smsDetail.getPhone(), "phone");
-		
 		Map<String, String> param = new HashMap<String, String>();
 		param.put("action", "send");
 		param.put("account", "922012");
@@ -70,6 +67,9 @@ public class SmsService {
 				jObject=parseXML(response);
 				smsDetail.setMessage(jObject.getString("message"));
 				if("Success".equals(jObject.getString("returnstatus"))){
+					StringUtil.setSession(request, code, "verificationCode");
+					StringUtil.setSession(request, smsDetail.getPhone(), "phone");
+					
 					smsDetail.setReturnstatus(1);//发送成功
 				}else{
 					log.error("短信调用异常");

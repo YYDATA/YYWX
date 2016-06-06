@@ -71,7 +71,8 @@ public class CustomerService {
 		saveOrUpCustomer(request,customer);
 		saveOrUpCustomerCertificate(request,customer);
 		//执行信息收集
-//		collect_info(request,customer);
+		customer=(Customer)StringUtil.getSession(request, "customer");
+		collect_info(request,customer);
 	}
 	/**
 	 *
@@ -102,49 +103,13 @@ public class CustomerService {
 		param.put("resonCd", "01");
 		param.put("mobileNo", customer.getCellPhone());
 		
-//		param.put("name", "蔡杭军");
-//		param.put("idNo", "339011197809199014");
-//		param.put("resonCd", "01");
-//		param.put("mobileNo", "18806756337");
-		
-//		param.put("name", "米么联调");
-//		param.put("idNo", "440102198301114447");
-//		param.put("resonCd", "01");
-//		param.put("mobileNo", "13266693365");
-		
 		List<RequestHead> requestHeads = new ArrayList<RequestHead>();
 		requestHeads.add(new RequestHead("Content-Type", "application/json"));
 		try {
-			String json =HttpConnect.getJson("http://127.0.0.1:8080/captureOL/company_executeAuth.action",
-					param, requestHeads);
-			System.out.print(json);
-			if (!"".equals(json)) {
-				JSONObject jsonObject = JSONObject.fromObject(json);
-				if("true".equals(jsonObject.getString("success"))){
-					
-				}else{
-					
-				}
-			}
-		} catch (Exception e) {
-			log.error(e.getMessage());
-		}
-		return null;
-	}
-	public String collect_infoa(String name,String idcard,String phone){
-		Map<String, String> param = new HashMap<String, String>();
-		param.put("client_secret", "76f5a521f5104983b5c9b21a57abfdae");
-		param.put("access_token", "71887e5ef67c43659401defc28b57f8e");
-		param.put("name", name);
-		param.put("idcard", idcard);
-		param.put("phone", phone);
-		
-		List<RequestHead> requestHeads = new ArrayList<RequestHead>();
-		requestHeads.add(new RequestHead("Content-Type", "application/json"));
-		try {
-			String json =HttpConnect.getJson("https://www.juxinli.com/api/access_report_data",
-					param, requestHeads);
-			System.out.print(json);
+			String json =HttpConnect.getJson("http://127.0.0.1:8080/captureOL/company_executeAuth.action?resonCd=01&name="+customer.getName()
+					+"&idNo="+request.getParameter("idCard")+"&mobileNo="+customer.getCellPhone(),
+					param, requestHeads,"post");
+			System.out.print("collect_info-----------------------------------"+json);
 			if (!"".equals(json)) {
 				JSONObject jsonObject = JSONObject.fromObject(json);
 				if("true".equals(jsonObject.getString("success"))){

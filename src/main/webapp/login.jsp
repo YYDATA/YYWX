@@ -7,8 +7,8 @@
     <title>元玉数据</title>
     <meta content="telephone=no" name="format-detection">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" type="text/css" href="../resources/library/bootstrap/dist/css/bootstrap.min.css">
-    <script src="../resources/library/angular/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./resources/library/bootstrap/dist/css/bootstrap.min.css">
+    <script src="./resources/library/angular/angular.min.js"></script>
     <script>
         (function() {
             var app = angular.module('app', []);

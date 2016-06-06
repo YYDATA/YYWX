@@ -62,11 +62,11 @@ public class HttpConnect {
 		string, bytes;
 	}
 	public static String getJson(String url, Map<String, String> param,
-			List<RequestHead> requestHeads) {
+			List<RequestHead> requestHeads,String method) {
 		List<Cookie> cookies = new ArrayList<Cookie>();
 		String json = "";
 		try {
-			json =(String)request(url, "get", param, "string",
+			json =(String)request(url, method, param, "string",
 					"UTF-8", cookies, requestHeads);
 		} catch (HttpException e) {
 			log.error(e.getMessage());

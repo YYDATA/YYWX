@@ -40,6 +40,9 @@ public class SmsService {
 	protected final Logger log = LoggerFactory.getLogger(this.getClass().getName());
 	
 	public void sendSms(HttpServletRequest request,SmsDetail smsDetail){
+		if(smsDetail==null){
+			smsDetail.setPhone(request.getParameter("cellPhone"));
+		}
 		String response="<?xml version=\"1.0\" encoding=\"utf-8\" ?><returnsms><returnstatus>Success</returnstatus><message>OK</message><remainpoint>1440</remainpoint><taskID>6538308382720020</taskID><resplist><resp>6538308382720020#@#17767173344#@#0#@#</resp></resplist><successCounts>1</successCounts></returnsms>";
 		String code=StringUtil.randomCode(6);
 		smsDetail.setContent("【品信金融】 您的验证码是"+code);

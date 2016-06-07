@@ -44,6 +44,8 @@
 		<property name="timeOut" value="600000" />
 	</bean>
 	 -->
+	 <!-- 引入异步类 -->
+	 <bean id="asyncService" class="com.zxlh.comm.async.service.impl.AsyncServiceImpl" />
    <util:properties id="settings" location="/WEB-INF/config/system.properties" />
 
 </beans>

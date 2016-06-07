@@ -70,6 +70,42 @@ define(function(require) {
                 }
             }
         })
+        app.directive('bankCard', ['validatePattern', function(validatePattern) {
+            return {
+                restrict: 'A',
+                scope: true,
+                require: 'ngModel',
+                link: function($scope, element, attrs, ngModelControl) {
+                    ngModelControl.$parsers.unshift(function(viewValue) {
+                        if (validatePattern.bankCard(viewValue)) {
+                            ngModelControl.$setValidity('bankCard', true);
+                            return viewValue;
+                        } else {
+                            ngModelControl.$setValidity('bankCard', false);
+                            return undefined;
+                        }
+                    });
+                }
+            }
+        }])
+        app.directive('idcard', ['validatePattern', function(validatePattern) {
+            return {
+                restrict: 'A',
+                scope: true,
+                require: 'ngModel',
+                link: function($scope, element, attrs, ngModelControl) {
+                    ngModelControl.$parsers.unshift(function(viewValue) {
+                        if (validatePattern.idcard(viewValue)) {
+                            ngModelControl.$setValidity('idcard', true);
+                            return viewValue;
+                        } else {
+                            ngModelControl.$setValidity('idcard', false);
+                            return undefined;
+                        }
+                    });
+                }
+            }
+        }])
         app.directive('checkVerifyCode', ['cache', function(cache) {
             var num = 60;
             cache.set('timer', num);
@@ -329,6 +365,5 @@ define(function(require) {
                 }
             }
         ]);
-
     }
 })

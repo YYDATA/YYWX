@@ -24,9 +24,24 @@
                     </label>
                     <div class="col-xs-10">
                         <div class="row">
-                            <input required name="idCard" ng-model="params.idCard" type="text" placeholder="借款人身份证号码" class="form-control">
+                            <input required name="idCard" idcard ng-model="params.idCard" type="text" placeholder="借款人身份证号码" class="form-control">
                             <div ng-messages="registerForm.idCard.$error" ng-show="!registerForm.idCard.$pristine">
                                 <div ng-message="required" class="help-block">必填项不能为空</div>
+                                <div ng-message="idcard" class="help-block">请输入正确的身份证号码</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix" ng-class="{'has-error':registerForm.bankCard.$invalid && !registerForm.bankCard.$pristine}">
+                    <label class="control-label col-xs-2">
+                        <img src="./resources/images/ioc05.png" alt="">
+                    </label>
+                    <div class="col-xs-10">
+                        <div class="row">
+                            <input required name="bankCard" bank-card ng-model="params.bankCard" type="text" placeholder="借款人银行卡号码" class="form-control">
+                            <div ng-messages="registerForm.bankCard.$error" ng-show="!registerForm.bankCard.$pristine">
+                                <div ng-message="required" class="help-block">必填项不能为空</div>
+                                <div ng-message="bankCard" class="help-block">请输入正确的银行卡号码</div>
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,5 @@
 package com.yy.service;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -8,19 +7,17 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import net.sf.json.JSONObject;
-
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yy.common.exception.CustomException;
 import com.yy.dao.CustomerDao;
 import com.yy.domain.entity.Customer;
 import com.yy.domain.entity.CustomerCertificate;
-import com.yy.web.utils.RequestHead;
-import com.yy.web.utils.HttpConnect;
+import com.yy.web.utils.HttpXmlClient;
 import com.yy.web.utils.StringUtil;
 /**
  * @ClassName: CustomerService
@@ -36,6 +33,8 @@ public class CustomerService {
 	CustomerDao customerDao;
 	@Autowired
 	CustomerCertificateService customerCertificateService;
+	@Autowired
+	CustomerWorkexperienceService xustomerWorkexperienceService;
 	/**
 	 *
 	 * @Title: saveOrUpCustomer
@@ -45,15 +44,15 @@ public class CustomerService {
 	 * @return void    返回类型
 	 */
 	public void saveOrUpCustomer(HttpServletRequest request,Customer customer){
-		Customer c=(Customer)request.getSession().getAttribute("customer");
-		if(c!=null)
-			customer.setCustomerID(c.getCustomerID());
+//		Customer c=(Customer)request.getSession().getAttribute("customer");
+//		if(c!=null)
+//			customer.setCustomerID(c.getCustomerID());
 		if(customer!=null&&customer.getCustomerID()!=null){
 			customer.setLastLoginTime(new Date());
 			customerDao.updateByPrimaryKeySelective(customer);
 		}else{
 			customer.setCreateTime(new Date());
-			customer.setCustomerStatus("PENDINGSX");//等待失信检查
+			customer.setCustomerStatus("PENDINZX");//等待失信检查
 			customerDao.insertSelective(customer);
 		}
 		customer=customerDao.selectByPrimaryKey(customer.getCustomerID());
@@ -68,11 +67,17 @@ public class CustomerService {
 	* @throws
 	 */
 	public void doSupplementCustomer(HttpServletRequest request,Customer customer){
+		Customer c=(Customer)request.getSession().getAttribute("customer");
+		if(c!=null)
+			customer.setCustomerID(c.getCustomerID());
+		
 		saveOrUpCustomer(request,customer);
+		
 		saveOrUpCustomerCertificate(request,customer);
-		//执行信息收集
-		customer=(Customer)StringUtil.getSession(request, "customer");
-		collect_info(request,customer);
+		xustomerWorkexperienceService.saveOrUpWorkexperience(request, customer);
+//		//执行信息收集
+//		customer=(Customer)StringUtil.getSession(request, "customer");
+//		collect_info(request,customer);
 	}
 	/**
 	 *
@@ -97,30 +102,58 @@ public class CustomerService {
 		}
 	}
 	public String collect_info(HttpServletRequest request,Customer customer){
-		Map<String, String> param = new HashMap<String, String>();
-		param.put("name", customer.getName());
-		param.put("idNo", request.getParameter("idCard"));
-		param.put("resonCd", "01");
-		param.put("mobileNo", customer.getCellPhone());
-		
-		List<RequestHead> requestHeads = new ArrayList<RequestHead>();
-		requestHeads.add(new RequestHead("Content-Type", "application/json"));
-		try {
-			String json =HttpConnect.getJson("http://127.0.0.1:8080/captureOL/company_executeAuth.action?resonCd=01&name="+customer.getName()
-					+"&idNo="+request.getParameter("idCard")+"&mobileNo="+customer.getCellPhone(),
-					param, requestHeads,"post");
-			System.out.print("collect_info-----------------------------------"+json);
-			if (!"".equals(json)) {
-				JSONObject jsonObject = JSONObject.fromObject(json);
-				if("true".equals(jsonObject.getString("success"))){
-					
-				}else{
-					
-				}
-			}
-		} catch (Exception e) {
-			log.error(e.getMessage());
-		}
-		return null;
+		Map<String, String> params = new HashMap<String, String>();  
+		params.put("name", customer.getName()); 
+		params.put("idNo", request.getParameter("idCard"));
+		params.put("resonCd", "01"); 
+		params.put("mobileNo", customer.getCellPhone());
+		      
+		return HttpXmlClient.post("http://127.0.0.1:8080/captureOL/company_executeAuth.action", params);  
 	}
+//	public String collect_info2(HttpServletRequest request,Customer customer){
+//		Map<String, String> param = new HashMap<String, String>();
+//		param.put("name", customer.getName());
+//		param.put("idNo", request.getParameter("idCard"));
+//		param.put("resonCd", "01");
+//		param.put("mobileNo", customer.getCellPhone());
+//		
+//		List<RequestHead> requestHeads = new ArrayList<RequestHead>();
+//		requestHeads.add(new RequestHead("Content-Type", "application/json"));
+//		try {
+//			String json =HttpConnect.getJson("http://127.0.0.1:8080/captureOL/company_executeAuth.action?resonCd=01&name="+customer.getName()
+//					+"&idNo="+request.getParameter("idCard")+"&mobileNo="+customer.getCellPhone(),
+//					param, requestHeads,"post");
+//			System.out.print("collect_info-----------------------------------"+json);
+//			if (!"".equals(json)) {
+//				JSONObject jsonObject = JSONObject.fromObject(json);
+//				if("true".equals(jsonObject.getString("success"))){
+//					
+//				}else{
+//					
+//				}
+//			}
+//		} catch (Exception e) {
+//			log.error(e.getMessage());
+//		}
+//		return null;
+//	}
+	public String submitCapture(HttpServletRequest request){
+		List<Customer> customerList = customerDao.getCustomer(new Customer(request.getParameter("account")));
+		if(customerList!=null&&customerList.size()>0){
+			Customer Customer = customerList.get(0);
+			Map<String, String> params = new HashMap<String, String>();  
+//		params.put("name",  request.getParameter("name")); 
+//		params.put("idCard", request.getParameter("idCard"));
+//		params.put("account",  request.getParameter("account")); 
+//		params.put("password",  request.getParameter("password"));
+			params.put("name",  "蔡杭军"); 
+			params.put("idCard", "339011197809199014");
+			params.put("account",  "18806756337"); 
+			params.put("password",  "999888");
+			return HttpXmlClient.post("http://127.0.0.1:8080/captureOL/company_submitCapture.action", params);  
+		}else{
+			throw new CustomException("无该用户");
+		}
+			
+		}
 }

@@ -1,12 +1,16 @@
 package com.yy.control;
 
 import java.io.StringWriter;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import net.sf.json.JSONObject;
 
+import org.apache.commons.httpclient.NameValuePair;
 import org.apache.commons.lang3.StringUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
@@ -14,14 +18,23 @@ import org.dom4j.Element;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
 
+import com.yy.web.utils.HttpXmlClient;
 import com.yy.web.utils.StringUtil;
 
 
 
 public class Test {
 	public static void main(String[] args) {
-		System.out.println(StringUtil.randomCode(6));
+		Map<String, String> params = new HashMap<String, String>();  
+		System.out.print(StringUtil.getDayByParam(new Date(), 5)); 
 	}
+	public static Date getNextDay(Date date) {  
+        Calendar calendar = Calendar.getInstance();  
+        calendar.setTime(date);  
+        calendar.add(Calendar.YEAR, -1);  
+        date = calendar.getTime();  
+        return date;  
+    }  
 	//DOM4j解析XML   
     public static void parse(String protocolXML) {   
     	JSONObject jObject = new JSONObject();

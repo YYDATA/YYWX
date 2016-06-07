@@ -1,13 +1,17 @@
 package com.yy.service;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yy.dao.CustomerWorkexperienceDao;
 import com.yy.domain.entity.Customer;
 import com.yy.domain.entity.CustomerWorkexperience;
+import com.yy.web.utils.StringUtil;
 
 /**
  * @ClassName: CustomerWorkexperienceService 
@@ -19,12 +23,19 @@ import com.yy.domain.entity.CustomerWorkexperience;
 public class CustomerWorkexperienceService {
 	@Autowired
 	CustomerWorkexperienceDao customerWorkexperienceDao;
-	public void saveOrUpWorkexperience(HttpServletRequest request,Customer customer){
+	public void saveWorkexperience(HttpServletRequest request,Customer customer){
 		CustomerWorkexperience customerWorkexperience=new CustomerWorkexperience();
 		customerWorkexperience.setCustomerID(customer.getCustomerID());
 		customerWorkexperience.setCompanyType(request.getParameter("companyType"));
-		customerWorkexperience.setRole("role");
-		if(customerWorkexperience!=null&&customerWorkexperience.getWorkExperienceID()!=null){
+		customerWorkexperience.setRole(request.getParameter("role"));
+		/**
+		 * 工作开始时间=当前时间-工作年限
+		 */
+		String workingLife = request.getParameter("workingLife");
+		if(StringUtils.isNotBlank(workingLife)){
+			customerWorkexperience.setStartDate(StringUtil.getDayByParam(new Date(), Integer.parseInt(workingLife)));
+		}
+		if(customerWorkexperience!=null&&customerWorkexperience.getWorkExperienceID()==null){
 			customerWorkexperienceDao.insertSelective(customerWorkexperience);
 		}else{
 			customerWorkexperienceDao.updateByPrimaryKeySelective(customerWorkexperience);

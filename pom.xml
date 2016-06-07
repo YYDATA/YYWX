@@ -399,9 +399,9 @@
 			<properties>
 				<!-- 数据库配置 -->
 				<maven.db.driverClassName>com.mysql.jdbc.Driver</maven.db.driverClassName>
-				<maven.db.url><![CDATA[jdbc:mysql://172.16.2.185:3306/zxlh?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull]]></maven.db.url>
-				<maven.db.username>root2</maven.db.username>
-				<maven.db.password>123456</maven.db.password>
+				<maven.db.url><![CDATA[jdbc:mysql://139.196.136.32:3306/cloudp2p?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull]]></maven.db.url>
+				<maven.db.username>root</maven.db.username>
+				<maven.db.password>1234qwer!@#$</maven.db.password>
 				<!-- log配置 -->
 				<maven.log4j.rootCategory.level>INFO</maven.log4j.rootCategory.level>
 				<maven.log4j.logger.com.yy>DEBUG</maven.log4j.logger.com.yy>
@@ -417,9 +417,9 @@
 			<properties>
 				<!-- 数据库配置 -->
 				<maven.db.driverClassName>com.mysql.jdbc.Driver</maven.db.driverClassName>
-				<maven.db.url><![CDATA[jdbc:mysql://172.16.2.185:3306/zxlh?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull]]></maven.db.url>
-				<maven.db.username>root2</maven.db.username>
-				<maven.db.password>123456</maven.db.password>
+				<maven.db.url><![CDATA[jdbc:mysql://139.196.136.32:3306/cloudp2p?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull]]></maven.db.url>
+				<maven.db.username>root</maven.db.username>
+				<maven.db.password>1234qwer!@#$</maven.db.password>
 				<!-- log配置 -->
 				<maven.log4j.rootCategory.level>INFO</maven.log4j.rootCategory.level>
 				<maven.log4j.logger.com.yy>INFO</maven.log4j.logger.com.yy>

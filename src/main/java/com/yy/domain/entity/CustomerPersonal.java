@@ -23,9 +23,9 @@ public class CustomerPersonal {
 
     private String hukouAddress;
 
-    private String highestDegree;
-
-    private String workingLife;
+//    private String highestDegree;
+//
+//    private String workingLife;
 
     public Long getCustomerID() {
         return customerID;
@@ -105,21 +105,5 @@ public class CustomerPersonal {
 
     public void setHukouAddress(String hukouAddress) {
         this.hukouAddress = hukouAddress == null ? null : hukouAddress.trim();
-    }
-
-    public String getHighestDegree() {
-        return highestDegree;
-    }
-
-    public void setHighestDegree(String highestDegree) {
-        this.highestDegree = highestDegree == null ? null : highestDegree.trim();
-    }
-
-    public String getWorkingLife() {
-        return workingLife;
-    }
-
-    public void setWorkingLife(String workingLife) {
-        this.workingLife = workingLife == null ? null : workingLife.trim();
     }
 }

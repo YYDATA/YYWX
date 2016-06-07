@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yy.dao.CustomerPersonalDao;
-import com.yy.domain.entity.Customer;
 import com.yy.domain.entity.CustomerPersonal;
 
 /**
@@ -20,9 +19,6 @@ public class CustomerPersonalService {
 	@Autowired
 	CustomerPersonalDao customerPersonalDao;
 	public void saveOrUpCustomerPersonal(HttpServletRequest request,CustomerPersonal customerPersonal){
-		Customer c=(Customer)request.getSession().getAttribute("customer");
-		if(c!=null)
-			customerPersonal.setCustomerID(c.getCustomerID());
 		customerPersonalDao.insertSelective(customerPersonal);
 
 	}

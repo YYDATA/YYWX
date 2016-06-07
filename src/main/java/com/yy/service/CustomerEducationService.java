@@ -2,10 +2,13 @@ package com.yy.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yy.dao.CustomerEducationDao;
+import com.yy.domain.entity.Customer;
 import com.yy.domain.entity.CustomerEducation;
 
 /**
@@ -19,7 +22,10 @@ public class CustomerEducationService {
 	@Autowired
 	private CustomerEducationDao customerEducationDao;
 
-	public void saveOrUpCustomerEducation(CustomerEducation customerEducation){
+	public void saveOrUpCustomerEducation(HttpServletRequest request,Customer customer){
+		CustomerEducation customerEducation = new CustomerEducation();
+		customerEducation.setEducation(request.getParameter("highestDegree"));
+		customerEducation.setCustomerID(customer.getCustomerID());
 		if(customerEducation!=null&&customerEducation.getCustomerEducationID()!=null){
 			customerEducationDao.updateByPrimaryKeySelective(customerEducation);
 		}else{

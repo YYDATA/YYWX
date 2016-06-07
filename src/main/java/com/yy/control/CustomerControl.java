@@ -1,5 +1,6 @@
 package com.yy.control;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +14,13 @@ import com.yy.common.domain.ResponseResult;
 import com.yy.domain.entity.Customer;
 import com.yy.domain.entity.CustomerPersonal;
 import com.yy.domain.entity.LoanOrder;
-import com.yy.domain.entity.SmsDetail;
 import com.yy.service.CustomerPersonalService;
 import com.yy.service.CustomerService;
 import com.yy.service.LoanOrderService;
 import com.yy.service.SmsService;
 import com.yy.web.utils.JsonViewFactory;
+import com.yy.web.utils.StringUtil;
+import com.zxlh.comm.async.service.AsyncService;
 
 /**
  * @ClassName: CustomerControl
@@ -34,9 +36,9 @@ public class CustomerControl {
 	@Autowired
 	LoanOrderService loanOrderService;
 	@Autowired
-	CustomerPersonalService customerPersonalService;
-	@Autowired
 	SmsService smsService;
+	@Resource
+	private AsyncService asyncService;
 
 	/**
 	 * @Title: saveCustomerLoan
@@ -67,6 +69,16 @@ public class CustomerControl {
 		Assert.notNull(request.getParameter("idCard"), "借款人身份证号不能为空");
 		
 		customerService.doSupplementCustomer(request,customer);
+		
+		//执行信息收集
+		customer=(Customer)StringUtil.getSession(request, "customer");
+//		customerService.collect_info(request,customer);
+		try {
+			asyncService.runTask(customerService,"collect_info",new Object[]{request,customer},null,null,10000,true);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
 		return JsonViewFactory.buildJsonView(new ResponseResult<>(true, "操作成功！", null));
 	}
 	/**
@@ -79,7 +91,7 @@ public class CustomerControl {
 	 */
 	@RequestMapping(value = "/saveOrUpdateCustomerPersonal", method = RequestMethod.POST)
 	public ModelAndView saveOrUpCustomerPersonal(HttpServletRequest request, CustomerPersonal customerPersonal){
-		customerPersonalService.saveOrUpCustomerPersonal(request,customerPersonal);
+		customerService.doSupplementCustomerPersonal(request, customerPersonal);
 		return JsonViewFactory.buildJsonView(new ResponseResult<>(true, "操作成功！", null));
 	}
 	/**

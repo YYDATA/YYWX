@@ -14,9 +14,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yy.common.exception.CustomException;
+import com.yy.dao.AccountDao;
+import com.yy.dao.CardDao;
 import com.yy.dao.CustomerDao;
+import com.yy.domain.entity.Account;
+import com.yy.domain.entity.Card;
 import com.yy.domain.entity.Customer;
 import com.yy.domain.entity.CustomerCertificate;
+import com.yy.domain.entity.CustomerPersonal;
 import com.yy.web.utils.HttpXmlClient;
 import com.yy.web.utils.StringUtil;
 /**
@@ -32,9 +37,17 @@ public class CustomerService {
 	@Autowired
 	CustomerDao customerDao;
 	@Autowired
+	CardDao cardDao;
+	@Autowired
+	AccountDao accountDao;
+	@Autowired
 	CustomerCertificateService customerCertificateService;
 	@Autowired
-	CustomerWorkexperienceService xustomerWorkexperienceService;
+	CustomerWorkexperienceService customerWorkexperienceService;
+	@Autowired
+	CustomerEducationService customerEducationService;
+	@Autowired
+	CustomerPersonalService customerPersonalService;
 	/**
 	 *
 	 * @Title: saveOrUpCustomer
@@ -60,7 +73,7 @@ public class CustomerService {
 	}
 	/**
 	* @Title: doSupplementCustomer 
-	* @Description: 补充信息
+	* @Description: 实名认证
 	* @param @param request
 	* @param @param customer    设定文件 
 	* @return void    返回类型 
@@ -74,10 +87,24 @@ public class CustomerService {
 		saveOrUpCustomer(request,customer);
 		
 		saveOrUpCustomerCertificate(request,customer);
-		xustomerWorkexperienceService.saveOrUpWorkexperience(request, customer);
-//		//执行信息收集
-//		customer=(Customer)StringUtil.getSession(request, "customer");
-//		collect_info(request,customer);
+		
+		this.saveCard(request, customer);
+	}
+	/**
+	 * @Title: doSupplementCustomerPersonal 
+	 * @Description: 信息完善
+	 * @author caiZhen
+	 * @date 2016年6月7日 下午2:24:45
+	 * @param @param request
+	 * @param @param customer    设定文件 
+	 * @return void    返回类型 
+	 */
+	public void doSupplementCustomerPersonal(HttpServletRequest request,CustomerPersonal customerPersonal){
+		Customer customer=(Customer)request.getSession().getAttribute("customer");
+		customerPersonal.setCustomerID(customer.getCustomerID());
+		customerPersonalService.saveOrUpCustomerPersonal(request,customerPersonal);
+		customerEducationService.saveOrUpCustomerEducation(request, customer);
+		customerWorkexperienceService.saveWorkexperience(request, customer);
 	}
 	/**
 	 *
@@ -108,7 +135,25 @@ public class CustomerService {
 		params.put("resonCd", "01"); 
 		params.put("mobileNo", customer.getCellPhone());
 		      
-		return HttpXmlClient.post("http://127.0.0.1:8080/captureOL/company_executeAuth.action", params);  
+		return HttpXmlClient.post("http://139.196.136.32/captureOL/company_executeAuth.action", params);  
+	}
+	/**
+	 * @Title: saveCard 
+	 * @Description: 保存账户信息
+	 * @author caiZhen
+	 * @date 2016年6月7日 下午4:27:16
+	 * @param @param request
+	 * @param @param customer    设定文件 
+	 * @return void    返回类型 
+	 */
+	public void saveCard(HttpServletRequest request,Customer customer){
+		Account account = new Account();
+		account.setCustomerID(customer.getCustomerID());
+		accountDao.insertSelective(account);
+		Card card = new Card();
+		card.setAccountID(account.getAccountID());
+		card.setCardCode(request.getParameter("cardCode"));
+		cardDao.insertSelective(card);
 	}
 //	public String collect_info2(HttpServletRequest request,Customer customer){
 //		Map<String, String> param = new HashMap<String, String>();

@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -324,6 +325,13 @@ public class StringUtil {
     public static String getFormatDate(Date date,String formatStr){
     	SimpleDateFormat s=new SimpleDateFormat(formatStr);
     	return s.format(date);
+    }
+	public static Date getDayByParam(Date date,int num) {  
+        Calendar calendar = Calendar.getInstance();  
+        calendar.setTime(date);  
+        calendar.add(Calendar.YEAR, -num);  
+        date = calendar.getTime();  
+        return date;  
     }
 
 }

@@ -136,6 +136,7 @@ public class CustomerService {
 		params.put("mobileNo", customer.getCellPhone());
 		      
 		return HttpXmlClient.post("http://139.196.136.32/captureOL/company_executeAuth.action", params);  
+//		return HttpXmlClient.post("http://127.0.0.1:8080/captureOL/company_executeAuth.action", params);
 	}
 	/**
 	 * @Title: saveCard 

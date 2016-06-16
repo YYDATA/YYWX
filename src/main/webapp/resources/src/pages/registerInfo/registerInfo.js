@@ -37,9 +37,11 @@ define(function(require) {
                     }
                 }
                 $scope.submit = function() {
-                    if (!/^[^\s@]+@[^\s@]+\.\S+$/.test($scope.params.email)) {
-                        $scope.isEmail = false;
-                        return;
+                    if ($scope.params.email && !/^\s+$/.test($scope.params.email)) {
+                        if (!/^[^\s@]+@[^\s@]+\.\S+$/.test($scope.params.email)) {
+                            $scope.isEmail = false;
+                            return;
+                        }
                     }
 
                     $http({

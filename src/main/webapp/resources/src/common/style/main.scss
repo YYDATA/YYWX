@@ -69,6 +69,22 @@ body{
 		bottom: 0;
 	}
 }
+
+.text-blue{
+	color: $blue;
+}
+.text-white{
+	color: #fff;
+}
+.text-sm{
+	font-size: 0.85em;
+}
+
+
+
+
+
+
 //进度条
 @-webkit-Keyframes progressBar{
 	0%{
@@ -346,9 +362,8 @@ body{
 	}
 }
 .area-wrap{
-	padding-top: 15px;
-	padding-bottom: 15px;
-	background-color: #FFF9EB;
+	padding-top: 15px !important;
+	padding-bottom: 15px !important;
 }
 
 .home-form{
@@ -375,6 +390,10 @@ body{
 	display: block;
 	width: 100%;
 	border: 1px solid #aaa;
+	&-static{
+		line-height: 36px;
+		margin-bottom: 0;
+	}
 }
 .help-block{
 	padding: 3px 0;
@@ -464,4 +483,47 @@ body{
 		padding: 5px 3px;
 		border-bottom: 1px solid #eee;
 	}
+}
+
+
+
+.card{
+	height: 140px;
+    background: $blue;
+    border-radius: 8px;
+    position: relative;
+	&-logo{
+		margin-right: 10px;
+		height: 36px;
+		width:36px;
+		padding: 5px;
+		background-color: #fff;
+		border-radius: 50%;
+	}
+	&-name{
+		margin-top: 0;
+	}
+	&-state{
+		border-radius: 3px;
+		border:1px solid #fff;
+		padding: 3px 4px;
+	}
+	&-body{
+		height: 74px;
+	}
+	&-number{
+		padding-top: 7px;
+		border-top: 1px solid #fff;
+	}
+}
+.user-photo{
+	width: 60px;
+	height: 60px;
+	overflow: hidden;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+.user-name{
+	line-height: 60px;
+	font-size: 18px;
 }

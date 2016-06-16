@@ -59,6 +59,42 @@ define(function(require) {
                 url: '/validaty',
                 templateUrl: require.toUrl('./pages/validaty/validaty.html'),
                 controller: 'validatyControl'
+            }).state('bound', {
+                url: '/bound',
+                templateUrl: require.toUrl('./pages/bound/bound.html'),
+                controller: 'boundControl'
+            }).state('boundOk', {
+                url: '/boundOk',
+                templateUrl: require.toUrl('./pages/boundOk/boundOk.html'),
+                controller: 'boundOkControl'
+            }).state('info', {
+                url: '/info',
+                templateUrl: require.toUrl('./pages/info/info.html'),
+                controller: 'infoControl'
+            }).state('infoEdit', {
+                url: '/infoEdit',
+                templateUrl: require.toUrl('./pages/infoEdit/infoEdit.html'),
+                controller: 'infoEditControl'
+            }).state('loan', {
+                url: '/loan',
+                templateUrl: require.toUrl('./pages/loan/loan.html'),
+                controller: 'loanControl'
+            }).state('loanOk', {
+                url: '/loanOk',
+                templateUrl: require.toUrl('./pages/loanOk/loanOk.html'),
+                controller: 'loanOkControl'
+            }).state('repayment', {
+                url: '/repayment',
+                templateUrl: require.toUrl('./pages/repayment/repayment.html'),
+                controller: 'repaymentControl'
+            }).state('setbacks', {
+                url: '/setbacks',
+                templateUrl: require.toUrl('./pages/setbacks/setbacks.html'),
+                controller: 'setbacksControl'
+            }).state('passwordForget', {
+                url: '/passwordForget',
+                templateUrl: require.toUrl('./pages/passwordForget/passwordForget.html'),
+                controller: 'passwordForgetControl'
             })
 
         }
@@ -77,7 +113,16 @@ define(function(require) {
     require('./pages/registerInfo/registerInfo')(app);
     require('./pages/registed/registed')(app);
     require('./pages/login/login')(app);
+    require('./pages/passwordForget/passwordForget')(app);
     require('./pages/validaty/validaty')(app);
+    require('./pages/bound/bound')(app);
+    require('./pages/boundOk/boundOk')(app);
+    require('./pages/info/info')(app);
+    require('./pages/infoEdit/infoEdit')(app);
+    require('./pages/loan/loan')(app);
+    require('./pages/loanOk/loanOk')(app);
+    require('./pages/repayment/repayment')(app);
+    require('./pages/setbacks/setbacks')(app);
 
     //启动应用
     angular.element(document).ready(function() {
@@ -154,7 +199,11 @@ define(function(require) {
                         },
                         login: {
                             registerInfo: 'slideInLeft slideOutRight',
-                            validaty: 'slideInRight slideOutLeft'
+                            validaty: 'slideInRight slideOutLeft',
+                            passwordForget: 'slideInRight slideOutLeft'
+                        },
+                        passwordForget: {
+                            login: 'slideInLeft slideOutRight'
                         },
                         validaty: {
                             login: 'slideInLeft slideOutRight'

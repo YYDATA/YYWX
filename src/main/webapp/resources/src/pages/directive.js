@@ -106,7 +106,7 @@ define(function(require) {
                 link: function($scope, element, attrs, ngModelControl) {
                     ngModelControl.$parsers.unshift(function(viewValue) {
 
-                        viewValue = viewValue.replace(/\D/g, '');
+                        viewValue = viewValue.replace(/[^\dxX](?!$)|x(?!$)/g, '');
                         var str = '';
                         for (var i = 0; i < viewValue.length; i++) {
                             if (i > 3 && (i + 2) % 4 == 0) {

@@ -31,6 +31,12 @@
     from m_account
     where AccountID = #{accountID,jdbcType=BIGINT}
   </select>
+   <select id="selectByCustomerID" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from m_account
+    where CustomerID = #{customerID,jdbcType=BIGINT}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from m_account
     where AccountID = #{accountID,jdbcType=BIGINT}

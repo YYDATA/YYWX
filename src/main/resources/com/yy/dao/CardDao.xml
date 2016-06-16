@@ -23,6 +23,12 @@
     from m_card
     where CardID = #{cardID,jdbcType=BIGINT}
   </select>
+   <select id="selectByAccountID" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from m_card
+    where AccountID = #{accountID,jdbcType=BIGINT}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from m_card
     where CardID = #{cardID,jdbcType=BIGINT}

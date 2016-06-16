@@ -26,6 +26,9 @@ public class CustomerEducationService {
 		CustomerEducation customerEducation = new CustomerEducation();
 		customerEducation.setEducation(request.getParameter("highestDegree"));
 		customerEducation.setCustomerID(customer.getCustomerID());
+		
+		customerEducation = getCustomerEducation(customerEducation);
+		
 		if(customerEducation!=null&&customerEducation.getCustomerEducationID()!=null){
 			customerEducationDao.updateByPrimaryKeySelective(customerEducation);
 		}else{
@@ -33,7 +36,7 @@ public class CustomerEducationService {
 		}
 	}
 	public CustomerEducation getCustomerEducation(CustomerEducation customerEducation){
-		List<CustomerEducation> list = customerEducationDao.getCustomerEducationByParam(customerEducation);
+		List<CustomerEducation> list = customerEducationDao.selectByCustomerID(customerEducation.getCustomerID());
 		if(list.size()>0){
 			CustomerEducation c=list.get(0);
 			customerEducation.setCustomerEducationID(c.getCustomerEducationID());

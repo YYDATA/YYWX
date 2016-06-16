@@ -1,6 +1,7 @@
 package com.yy.control;
 
 import java.io.StringWriter;
+import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -25,8 +26,37 @@ import com.yy.web.utils.StringUtil;
 
 public class Test {
 	public static void main(String[] args) {
-		Map<String, String> params = new HashMap<String, String>();  
-		System.out.print(StringUtil.getDayByParam(new Date(), 5)); 
+		String tIdNo="339011197809199024";
+		 String sex = "";
+	        if (tIdNo.length() == 15)
+	        {
+	            sex = tIdNo.substring(14, 15);
+	        }
+	        else
+	        {
+	            sex = tIdNo.substring(16, 17);
+	        }
+            int iSex = Integer.parseInt(sex);
+            iSex %= 2;
+            if (iSex == 0)
+            {
+            	System.out.println(0);
+            }
+            if (iSex == 1)
+            {
+            	System.out.println(1);
+            }
+	}
+	public static void a(){
+		JSONObject params=new JSONObject();
+		params.put("name",  "蔡振"); 
+		params.put("idNo", "339011197809199014");
+		params.put("mobileNo",  "17767173344"); 
+		params.put("password",  "password");
+		params.put("token",  "token");
+		params.put("website",  "website");
+		params.put("captcha",  "captcha");
+		System.out.println(params);
 	}
 	public static Date getNextDay(Date date) {  
         Calendar calendar = Calendar.getInstance();  

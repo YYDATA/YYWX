@@ -14,6 +14,15 @@
     <result column="HukouAddress" property="hukouAddress" jdbcType="VARCHAR" />
     <result column="WorkingLife" property="workingLife" jdbcType="VARCHAR" />
   </resultMap>
+   <sql id="Base_Column_List" >
+    CustomerID, Sex, Birthdate,National, MarriageType, PoliticsStatus,DwellingCondition, ResidentialAddress,ResidentialPostCode, HukouAddress
+  </sql>
+  <select id="selectByCustomerID" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  	select 
+  	<include refid="Base_Column_List" />
+    from m_customer_personal
+    where CustomerID = #{customerID,jdbcType=BIGINT}
+  </select>
   <insert id="insert" parameterType="com.yy.domain.entity.CustomerPersonal" >
     insert into m_customer_personal (CustomerID, Sex, Birthdate, 
       National, MarriageType, PoliticsStatus, 
@@ -91,4 +100,37 @@
       </if>
     </trim>
   </insert>
+   <update id="updateByCustomerID" parameterType="com.yy.domain.entity.CustomerPersonal" >
+    update m_customer_personal
+   	 <set>
+      <if test="sex != null" >
+        Sex=#{sex,jdbcType=CHAR},
+      </if>
+      <if test="birthdate != null" >
+        Birthdate=#{birthdate,jdbcType=DATE},
+      </if>
+      <if test="national != null" >
+        National#{national,jdbcType=VARCHAR},
+      </if>
+      <if test="marriageType != null" >
+        MarriageType=#{marriageType,jdbcType=VARCHAR},
+      </if>
+      <if test="politicsStatus != null" >
+        PoliticsStatus=#{politicsStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="dwellingCondition != null" >
+        DwellingCondition=#{dwellingCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="residentialAddress != null" >
+        ResidentialAddress=#{residentialAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="residentialPostCode != null" >
+        ResidentialPostCode=#{residentialPostCode,jdbcType=CHAR},
+      </if>
+      <if test="hukouAddress != null" >
+        HukouAddress=#{hukouAddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CustomerID=#{customerID,jdbcType=BIGINT}
+    </update>
 </mapper>

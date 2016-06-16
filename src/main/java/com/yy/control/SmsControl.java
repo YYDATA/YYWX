@@ -36,23 +36,4 @@ public class SmsControl {
 		smsService.sendSms(request, smsDetail);
 		return JsonViewFactory.buildJsonView(new ResponseResult<>(true, "发送成功！", null));
 	}
-	/**
-	 * @Title: sendSMS 
-	 * phone
-	 * @author caiZhen
-	 * @date 2016年6月8日 下午1:24:12
-	 * @param request
-	 * @param smsDetail
-	 * 		  phone：收短信电话
-	 * 		  content：短信内容
-	 * @param @return    设定文件 
-	 * @return ModelAndView    返回类型 
-	 */
-	@RequestMapping(value="sendSMS",method=RequestMethod.POST)
-	public ModelAndView sendSMS(HttpServletRequest request,SmsDetail smsDetail){
-		Assert.notNull(smsDetail.getPhone(), "手机号不能为空");
-		Assert.notNull(smsDetail.getContent(), "短信内容不能为空");
-		smsService.sendSms_async(request, smsDetail);
-		return JsonViewFactory.buildJsonView(new ResponseResult<>(true, "发送成功！", null));
-	}
 }

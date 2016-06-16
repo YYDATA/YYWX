@@ -27,6 +27,12 @@
     from m_customer_workexperience
     where WorkExperienceID = #{workExperienceID,jdbcType=BIGINT}
   </select>
+  <select id="selectByCustomerID" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from m_customer_workexperience
+    where CustomerID = #{customerID,jdbcType=BIGINT}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from m_customer_workexperience
     where WorkExperienceID = #{workExperienceID,jdbcType=BIGINT}

@@ -1,5 +1,6 @@
 package com.yy.service;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -21,12 +22,32 @@ public class LoanOrderService {
 	LoanOrderDao loanOrderDao;
 	@Autowired
 	private CustomerService customerService;
+	/**
+	 * @Title: saveOrUpLoadOrder 
+	 * @Description: 新增、修改贷款记录
+	 * @author caiZhen
+	 * @date 2016年6月11日 下午7:06:45
+	 * @param @param request
+	 * @param @param loanOrder    设定文件 
+	 * @return void    返回类型 
+	 * @throws
+	 */
 	public void saveOrUpLoadOrder(HttpServletRequest request,LoanOrder loanOrder){
-//		if(customer!=null)
-//			request.getSession().setAttribute("customer", customer);
+		List<LoanOrder> loanOrderList = loanOrderDao.selectByParam(new LoanOrder(null,loanOrder.getCustomerID(),"P"));
+		if(loanOrderList!=null&&loanOrderList.size()>0){
+			throw new CustomException("该用户有在审批业务");
+		}
 		if(StringUtils.isBlank(loanOrder.getLoanOrderCode())){
 			loanOrder.setOrderDate(new Date());
+			//新增初始化部分信息
+			loanOrder.setLoanAmount(loanOrder.getLoanAmount()*10000);//将万元转化成元
+			loanOrder.setProductCode("16001001");
+			loanOrder.setLoanTitle("保险-现金循环贷");
+			loanOrder.setSalerID(3l);
+			loanOrder.setOrderStatus("P");
+			loanOrder.setInterestRate(new BigDecimal("0.1500"));
 			loanOrder.setLoanOrderCode(getLoanOrderCode());
+			
 			loanOrderDao.insert(loanOrder);
 		}else{
 			loanOrderDao.updateByPrimaryKeySelective(loanOrder);
@@ -41,7 +62,10 @@ public class LoanOrderService {
 	 * @param @param loanOrder    设定文件 
 	 * @return void    返回类型 
 	 */
-	public void saveCustomerLoan(HttpServletRequest request,LoanOrder loanOrder){
+	public String saveCustomerLoan(HttpServletRequest request,LoanOrder loanOrder){
+		
+		
+		String str="";
 		String verificationCode = (String)StringUtil.getSession(request, "verificationCode");
 		String phone = (String)StringUtil.getSession(request, "phone");
 		if(StringUtils.isBlank(verificationCode)||StringUtils.isBlank(phone)){
@@ -58,7 +82,8 @@ public class LoanOrderService {
 		Customer customer = new Customer(loanOrder.getCellPhone());
 		List<Customer> listCustomer = customerService.getCustomer(customer);
 		//设置customerid
-		if(listCustomer.size()>0){
+		if(listCustomer!=null&&listCustomer.size()>0){
+			str = "exist";
 			customer=listCustomer.get(0);
 			loanOrder.setCustomerID(customer.getCustomerID());
 			StringUtil.setSession(request, customer, "customer");
@@ -67,6 +92,8 @@ public class LoanOrderService {
 			loanOrder.setCustomerID(customer.getCustomerID());
 		}
 		saveOrUpLoadOrder(request,loanOrder);
+		
+		return str;
 	}
 	/**
 	 * 

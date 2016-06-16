@@ -1,5 +1,7 @@
 package com.yy.dao;
 
+import java.util.List;
+
 import com.yy.domain.entity.Account;
 
 public interface AccountDao {
@@ -14,4 +16,6 @@ public interface AccountDao {
     int updateByPrimaryKeySelective(Account record);
 
     int updateByPrimaryKey(Account record);
+    
+    List<Account> selectByCustomerID(Long customerID);
 }

@@ -1,5 +1,7 @@
 package com.yy.dao;
 
+import java.util.List;
+
 import com.yy.domain.entity.CustomerCertificate;
 
 public interface CustomerCertificateDao {
@@ -14,4 +16,6 @@ public interface CustomerCertificateDao {
     int updateByPrimaryKeySelective(CustomerCertificate record);
 
     int updateByPrimaryKey(CustomerCertificate record);
+    
+    List<CustomerCertificate> selectByCustomerID(Long customerID);
 }

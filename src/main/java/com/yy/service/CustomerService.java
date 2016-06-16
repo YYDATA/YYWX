@@ -7,10 +7,10 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.yy.common.exception.CustomException;
@@ -20,10 +20,10 @@ import com.yy.dao.CustomerDao;
 import com.yy.domain.entity.Account;
 import com.yy.domain.entity.Card;
 import com.yy.domain.entity.Customer;
-import com.yy.domain.entity.CustomerCertificate;
-import com.yy.domain.entity.CustomerPersonal;
 import com.yy.web.utils.HttpXmlClient;
 import com.yy.web.utils.StringUtil;
+
+import net.sf.json.JSONObject;
 /**
  * @ClassName: CustomerService
  * @Description: 客户管理服务类
@@ -48,6 +48,9 @@ public class CustomerService {
 	CustomerEducationService customerEducationService;
 	@Autowired
 	CustomerPersonalService customerPersonalService;
+	
+	@Value("#{settings['is_get_juxinli_data']}")
+	private String is_get_juxinli_data="";
 	/**
 	 *
 	 * @Title: saveOrUpCustomer
@@ -57,9 +60,6 @@ public class CustomerService {
 	 * @return void    返回类型
 	 */
 	public void saveOrUpCustomer(HttpServletRequest request,Customer customer){
-//		Customer c=(Customer)request.getSession().getAttribute("customer");
-//		if(c!=null)
-//			customer.setCustomerID(c.getCustomerID());
 		if(customer!=null&&customer.getCustomerID()!=null){
 			customer.setLastLoginTime(new Date());
 			customerDao.updateByPrimaryKeySelective(customer);
@@ -77,17 +77,17 @@ public class CustomerService {
 	* @param @param request
 	* @param @param customer    设定文件 
 	* @return void    返回类型 
-	* @throws
 	 */
 	public void doSupplementCustomer(HttpServletRequest request,Customer customer){
 		Customer c=(Customer)request.getSession().getAttribute("customer");
 		if(c!=null)
 			customer.setCustomerID(c.getCustomerID());
 		
-		saveOrUpCustomer(request,customer);
+		saveOrUpCustomer(request,customer); //更新姓名
 		
-		saveOrUpCustomerCertificate(request,customer);
-		
+		customerCertificateService.saveCustomerCertificate(request,customer);//更新身份证
+		customerEducationService.saveOrUpCustomerEducation(request, customer);//更新学历
+		customerPersonalService.saveCustomerPersonal(request, customer);//更新婚姻情况
 		this.saveCard(request, customer);
 	}
 	/**
@@ -99,12 +99,27 @@ public class CustomerService {
 	 * @param @param customer    设定文件 
 	 * @return void    返回类型 
 	 */
-	public void doSupplementCustomerPersonal(HttpServletRequest request,CustomerPersonal customerPersonal){
-		Customer customer=(Customer)request.getSession().getAttribute("customer");
-		customerPersonal.setCustomerID(customer.getCustomerID());
-		customerPersonalService.saveOrUpCustomerPersonal(request,customerPersonal);
-		customerEducationService.saveOrUpCustomerEducation(request, customer);
-		customerWorkexperienceService.saveWorkexperience(request, customer);
+	public JSONObject doSupplementCustomer(HttpServletRequest request){
+		Customer c=(Customer)request.getSession().getAttribute("customer");
+		if(c==null){
+			throw new CustomException("会话消失");
+		}
+//		customerPersonal.setCustomerID(customer.getCustomerID()); 
+//		customerPersonalService.saveOrUpCustomerPersonal(request,customerPersonal);
+//		customerEducationService.saveOrUpCustomerEducation(request, customer);
+		customerWorkexperienceService.saveWorkexperience(request, c);//更新工作经历
+		
+		
+		Customer customer = new Customer();
+		customer.setCustomerID(c.getCustomerID());
+		customer.setEmail(request.getParameter("email"));
+		saveOrUpCustomer(request,customer); //更新邮箱
+		
+		customerCertificateService.saveCustomerCertificate(request,customer);//更新QQ
+		JSONObject jObject = new JSONObject();
+		jObject.put("account", c.getCellPhone());
+		jObject.put("is_get_juxinli_data", is_get_juxinli_data);
+		return jObject;
 	}
 	/**
 	 *
@@ -117,28 +132,18 @@ public class CustomerService {
 	public List<Customer> getCustomer(Customer customer){
 		return customerDao.getCustomer(customer);
 	}
-	private void saveOrUpCustomerCertificate(HttpServletRequest request,Customer customer){
-		CustomerCertificate customerCertificate=null;
-		if(StringUtils.isNoneBlank(request.getParameter("idCard"))){
-			customerCertificate=new CustomerCertificate(customer.getCustomerID(),"ID",request.getParameter("idCard"));
-			customerCertificateService.saveOrUpCustomerCertificate(customerCertificate);
-		}
-		if(StringUtils.isNoneBlank(request.getParameter("qq"))){
-			customerCertificate=new CustomerCertificate(customer.getCustomerID(),"QQ",request.getParameter("qq"));
-			customerCertificateService.saveOrUpCustomerCertificate(customerCertificate);
-		}
-	}
-	public String collect_info(HttpServletRequest request,Customer customer){
-		Map<String, String> params = new HashMap<String, String>();  
-		params.put("name", customer.getName()); 
-		params.put("idNo", request.getParameter("idCard"));
-		params.put("resonCd", "01"); 
-		params.put("mobileNo", customer.getCellPhone());
-		params.put("cardCode", request.getParameter("cardCode"));
-		      
-		return HttpXmlClient.post("http://139.196.136.32/captureOL/company_executeAuth.action", params);  
-//		return HttpXmlClient.post("http://127.0.0.1:8080/captureOL/company_executeAuth.action", params);
-	}
+//	private void saveOrUpCustomerCertificate(HttpServletRequest request,Customer customer){
+//		CustomerCertificate customerCertificate=null;
+//		if(StringUtils.isNoneBlank(request.getParameter("idCard"))){
+//			customerCertificate=new CustomerCertificate(customer.getCustomerID(),"ID",request.getParameter("idCard"));
+//			customerCertificateService.saveOrUpCustomerCertificate(customerCertificate);
+//		}
+//		if(StringUtils.isNoneBlank(request.getParameter("qq"))){
+//			customerCertificate=new CustomerCertificate(customer.getCustomerID(),"QQ",request.getParameter("qq"));
+//			customerCertificateService.saveOrUpCustomerCertificate(customerCertificate);
+//		}
+//	}
+
 	/**
 	 * @Title: saveCard 
 	 * @Description: 保存账户信息
@@ -151,56 +156,53 @@ public class CustomerService {
 	public void saveCard(HttpServletRequest request,Customer customer){
 		Account account = new Account();
 		account.setCustomerID(customer.getCustomerID());
-		accountDao.insertSelective(account);
+		this.saveOrUpAccount(account);
+		
 		Card card = new Card();
 		card.setAccountID(account.getAccountID());
 		card.setCardCode(request.getParameter("cardCode"));
-		cardDao.insertSelective(card);
+//		cardDao.insertSelective(card);
+		this.saveOrUpCard(card);
 	}
-//	public String collect_info2(HttpServletRequest request,Customer customer){
-//		Map<String, String> param = new HashMap<String, String>();
-//		param.put("name", customer.getName());
-//		param.put("idNo", request.getParameter("idCard"));
-//		param.put("resonCd", "01");
-//		param.put("mobileNo", customer.getCellPhone());
-//		
-//		List<RequestHead> requestHeads = new ArrayList<RequestHead>();
-//		requestHeads.add(new RequestHead("Content-Type", "application/json"));
-//		try {
-//			String json =HttpConnect.getJson("http://127.0.0.1:8080/captureOL/company_executeAuth.action?resonCd=01&name="+customer.getName()
-//					+"&idNo="+request.getParameter("idCard")+"&mobileNo="+customer.getCellPhone(),
-//					param, requestHeads,"post");
-//			System.out.print("collect_info-----------------------------------"+json);
-//			if (!"".equals(json)) {
-//				JSONObject jsonObject = JSONObject.fromObject(json);
-//				if("true".equals(jsonObject.getString("success"))){
-//					
-//				}else{
-//					
-//				}
-//			}
-//		} catch (Exception e) {
-//			log.error(e.getMessage());
-//		}
-//		return null;
-//	}
-	public String submitCapture(HttpServletRequest request){
-		List<Customer> customerList = customerDao.getCustomer(new Customer(request.getParameter("account")));
-		if(customerList!=null&&customerList.size()>0){
-			Customer Customer = customerList.get(0);
-			Map<String, String> params = new HashMap<String, String>();  
-//		params.put("name",  request.getParameter("name")); 
-//		params.put("idCard", request.getParameter("idCard"));
-//		params.put("account",  request.getParameter("account")); 
-//		params.put("password",  request.getParameter("password"));
-			params.put("name",  "蔡杭军"); 
-			params.put("idCard", "339011197809199014");
-			params.put("account",  "18806756337"); 
-			params.put("password",  "999888");
-			return HttpXmlClient.post("http://127.0.0.1:8080/captureOL/company_submitCapture.action", params);  
+	public void saveOrUpAccount(Account account){
+		List<Account> accountList = accountDao.selectByCustomerID(account.getCustomerID());
+		if(accountList!=null&&accountList.size()>0){
+			Account record = accountList.get(0);
+			account.setAccountID(record.getAccountID());
+			accountDao.updateByPrimaryKeySelective(account);
 		}else{
-			throw new CustomException("无该用户");
+			accountDao.insertSelective(account);
 		}
+	}
+	public void saveOrUpCard(Card card){
+		List<Card> cardList = cardDao.selectByAccountID(card.getAccountID());
+		if(cardList!=null&&cardList.size()>0){
+			Card record = cardList.get(0);
+			card.setCardID(record.getCardID());
+			cardDao.updateByPrimaryKeySelective(card);
+		}else{
+			cardDao.insertSelective(card);
+		}
+	}
+
+	public Map doExecuteJxl(HttpServletRequest request){
+		Map<String, String> params = new HashMap<String, String>();  
+				
+		return params;
+		
+		
 			
-		}
+	}
+	/**
+	 * @Title: saveCard 
+	 * @Description: 验证手机验证码
+	 * @author caiZhen
+	 * @date 2016年6月13日 下午4:27:16
+	 * @param @param request
+	 * @param @param customer    设定文件 
+	 * @return void    返回类型 
+	 */
+	public void doValidateCode(HttpServletRequest request){
+			
+	}
 }

@@ -1,9 +1,13 @@
 package com.yy.control;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,12 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.yy.common.domain.ResponseResult;
 import com.yy.domain.entity.Customer;
-import com.yy.domain.entity.CustomerPersonal;
 import com.yy.domain.entity.LoanOrder;
-import com.yy.service.CustomerPersonalService;
 import com.yy.service.CustomerService;
 import com.yy.service.LoanOrderService;
 import com.yy.service.SmsService;
+import com.yy.web.utils.HttpXmlClient;
 import com.yy.web.utils.JsonViewFactory;
 import com.yy.web.utils.StringUtil;
 import com.zxlh.comm.async.service.AsyncService;
@@ -52,8 +55,7 @@ public class CustomerControl {
 	public ModelAndView saveCustomerLoan(HttpServletRequest request, LoanOrder loanOrder){
 		Assert.notNull(loanOrder.getCellPhone(), "手机号不能为空");
 		Assert.notNull(request.getParameter("code"), "验证码不能为空");
-		loanOrderService.saveCustomerLoan(request, loanOrder);
-		return JsonViewFactory.buildJsonView(new ResponseResult<>(true, "操作成功！", null));
+		return JsonViewFactory.buildJsonView(new ResponseResult<>(true, "操作成功！", loanOrderService.saveCustomerLoan(request, loanOrder)));
 	}
 	/**
 	 * @Title: saveOrUpdateCustomer
@@ -70,15 +72,6 @@ public class CustomerControl {
 		
 		customerService.doSupplementCustomer(request,customer);
 		
-		//执行信息收集
-		customer=(Customer)StringUtil.getSession(request, "customer");
-//		customerService.collect_info(request,customer);
-		try {
-			asyncService.runTask(customerService,"collect_info",new Object[]{request,customer},null,null,10000,true);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
 		return JsonViewFactory.buildJsonView(new ResponseResult<>(true, "操作成功！", null));
 	}
 	/**
@@ -90,22 +83,7 @@ public class CustomerControl {
 	 * @return ModelAndView
 	 */
 	@RequestMapping(value = "/saveOrUpdateCustomerPersonal", method = RequestMethod.POST)
-	public ModelAndView saveOrUpCustomerPersonal(HttpServletRequest request, CustomerPersonal customerPersonal){
-		customerService.doSupplementCustomerPersonal(request, customerPersonal);
-		return JsonViewFactory.buildJsonView(new ResponseResult<>(true, "操作成功！", null));
-	}
-	/**
-	 * @Title: collect_info 
-	 * @Description: 采集信息
-	 * @author caiZhen
-	 * @date 2016年6月6日 上午11:28:29
-	 * @param @param request
-	 * @param @return    设定文件 
-	 * @return ModelAndView    返回类型 
-	 */
-	@RequestMapping(value="collect_info",method=RequestMethod.GET)
-	public ModelAndView collect_info(HttpServletRequest request){
-		customerService.collect_info(request,null);
-		return JsonViewFactory.buildJsonView(new ResponseResult<>(true, "操作成功！", null));
+	public ModelAndView saveOrUpCustomerPersonal(HttpServletRequest request){
+		return JsonViewFactory.buildJsonView(new ResponseResult<>(true, "操作成功！", customerService.doSupplementCustomer(request)));
 	}
 }

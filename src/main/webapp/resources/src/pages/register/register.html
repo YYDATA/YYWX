@@ -32,6 +32,45 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group" ng-class="{'has-error':registerForm.highestDegree.$invalid && !registerForm.highestDegree.$pristine}">
+                    <label class="control-label col-xs-2">
+                        <img src="./resources/images/ioc09.png">
+                    </label>
+                    <div class="col-xs-10">
+                        <div class="row">
+                            <select ng-model="params.highestDegree" name="highestDegree" class="form-control" required>
+                                <option value="">请选择学历</option>
+                                <option value="0">博士</option>
+                                <option value="1">硕士</option>
+                                <option value="2">本科</option>
+                                <option value="3">大专</option>
+                                <option value="4">中专生或高中</option>
+                                <option value="6">初中及以下</option>
+                            </select>
+                            <div ng-messages="registerForm.highestDegree.$error" ng-show="!registerForm.highestDegree.$pristine">
+                                <div ng-message="required" class="help-block">请选择学历</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':registerForm.marriageType.$invalid && !registerForm.marriageType.$pristine}">
+                    <label class="control-label col-xs-2">
+                        <img src="./resources/images/ioc11.png" alt="">
+                    </label>
+                    <div class="col-xs-10">
+                        <div class="row">
+                            <select ng-model="params.marriageType" class="form-control" name="marriageType" required>
+                                <option value="">请选择婚姻情况</option>
+                                <option value="M">已婚</option>
+                                <option value="U">未婚</option>
+                            </select>
+                            <div ng-messages="registerForm.marriageType.$error" ng-show="!registerForm.marriageType.$pristine">
+                                <div ng-message="required" class="help-block">请选择学历</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="form-group clearfix" ng-class="{'has-error':registerForm.cardCode.$invalid && !registerForm.cardCode.$pristine}">
                     <label class="control-label col-xs-2">
                         <img src="./resources/images/ioc05.png" alt="">
@@ -42,33 +81,6 @@
                             <div ng-messages="registerForm.cardCode.$error" ng-show="!registerForm.cardCode.$pristine">
                                 <div ng-message="required" class="help-block">必填项不能为空</div>
                                 <div ng-message="bankCard" class="help-block">请输入正确的银行卡号码</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group clearfix" ng-class="{'has-error':registerForm.email.$invalid && !registerForm.email.$pristine}">
-                    <label class="control-label col-xs-2">
-                        <img src="./resources/images/ioc07.png" alt="">
-                    </label>
-                    <div class="col-xs-10">
-                        <div class="row">
-                            <input required ng-model="params.email" name="email" type="text" placeholder="借款人常用邮箱" class="form-control" ng-pattern="/^[^\s@]+@[^\s@]+\.\S+$/">
-                            <div ng-messages="registerForm.email.$error" ng-show="!registerForm.email.$pristine">
-                                <div ng-message="required" class="help-block">必填项不能为空</div>
-                                <div ng-message="pattern" class="help-block">请输入正确的邮箱</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group clearfix" ng-class="{'has-error':registerForm.qq.$invalid && !registerForm.qq.$pristine}">
-                    <label class="control-label col-xs-2">
-                        <img src="./resources/images/ioc06.png" alt="">
-                    </label>
-                    <div class="col-xs-10">
-                        <div class="row">
-                            <input ng-model="params.qq" name="qq" ng-pattern="/^[1-9]\d{4,11}$/" type="number" placeholder="借款人QQ(选填)" class="form-control">
-                            <div ng-messages="registerForm.qq.$error" ng-show="!registerForm.qq.$pristine">
-                                <div ng-message="pattern" class="help-block">请填写正确的QQ号码</div>
                             </div>
                         </div>
                     </div>

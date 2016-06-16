@@ -1,6 +1,7 @@
 package com.yy.service;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -31,9 +32,14 @@ public class CustomerWorkexperienceService {
 		/**
 		 * 工作开始时间=当前时间-工作年限
 		 */
-		String workingLife = request.getParameter("workingLife");
+		String workingLife = (String)request.getParameter("workingLife");
 		if(StringUtils.isNotBlank(workingLife)){
 			customerWorkexperience.setStartDate(StringUtil.getDayByParam(new Date(), Integer.parseInt(workingLife)));
+		}
+		
+		List<CustomerWorkexperience> cwList = customerWorkexperienceDao.selectByCustomerID(customerWorkexperience.getCustomerID());
+		if(cwList!=null&&cwList.size()>0){
+			customerWorkexperience.setWorkExperienceID(cwList.get(0).getWorkExperienceID());
 		}
 		if(customerWorkexperience!=null&&customerWorkexperience.getWorkExperienceID()==null){
 			customerWorkexperienceDao.insertSelective(customerWorkexperience);

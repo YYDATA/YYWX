@@ -17,5 +17,5 @@ public interface CustomerEducationDao {
 
     int updateByPrimaryKey(CustomerEducation record);
 
-    List<CustomerEducation> getCustomerEducationByParam(CustomerEducation record);
+    List<CustomerEducation> selectByCustomerID(Long customerID);
 }

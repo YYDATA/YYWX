@@ -13,6 +13,10 @@ define(function(require) {
                         data: $scope.params
                     }).success(function(data) {
                         if (data.success) {
+							if(data.data=='exist'){
+								$state.go('registed');
+								return;
+							}
                             $state.go('register');
                         } else {
                             alert(data.msg);

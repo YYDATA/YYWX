@@ -28,6 +28,7 @@ define(function(require) {
 
             //配置路由
             $urlRouterProvider.when('', '/home');
+            $urlRouterProvider.otherwise('/home');
 
             $stateProvider.state("home", {
                 url: '/home',

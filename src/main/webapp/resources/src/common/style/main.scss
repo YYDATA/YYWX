@@ -600,15 +600,15 @@ body{
 		position: relative;
 		padding-bottom: 20px;
 		padding-left: 50px;
-		padding-top: 10px;
+		padding-top: 5px;
 		color: #999;
 		&:before{
 			content: "";
 			position: absolute;
 			left: 0;
 			top: 0;
-			width: 40px;
-			height: 40px;
+			width: 30px;
+			height: 30px;
 			border-radius: 50%;
 			border:10px solid #fff;
 			background-color: #999;
@@ -620,7 +620,7 @@ body{
 			content: "";
 			width: 2px;
 			height: 100%;
-			left: 19px;
+			left: 14px;
 			top: 0;
 		}
 		&:last-child{
